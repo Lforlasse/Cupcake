@@ -17,8 +17,8 @@ public class DBConnector {
             nameDB = "cupcake";
             driver = "com.mysql.cj.jdbc.Driver";
             url = "jdbc:mysql://localhost:3306/" + nameDB + "?verifyServerCertificate=false&useSSL=true&serverTimezone=UTC";
-            username = "root";
-            password = "admin";
+            username = "admin";
+            password = "cupcakeworld";
             Class.forName(driver);
 
             //System.out.println("\n--------------- MySQL ---------------");
