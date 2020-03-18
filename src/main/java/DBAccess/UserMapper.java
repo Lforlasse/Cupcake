@@ -16,7 +16,7 @@ import java.sql.Statement;
 public class UserMapper {
 
     public static void createUser( User user ) throws LoginSampleException {
-        String query = "INSERT INTO users (email, password, role) " + "VALUES (\""
+        String query = "INSERT INTO users (Email, UserPassword, RoleId) " + "VALUES (\""
                 + user.getEmail() + "\", \""
                 + user.getPassword() + "\", \""
                 + user.getRole() + "\")";
@@ -44,7 +44,7 @@ public class UserMapper {
     }
 
     public static User login( String email, String password ) throws LoginSampleException {
-        String query = "SELECT id, role FROM Users WHERE email = \"" + email + "\" AND password = \"" + password + "\"";
+        String query = "SELECT UserId, RoleId FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
         ResultSet rs = DBConnector.querySQL(query);
 
         try {
@@ -57,8 +57,8 @@ public class UserMapper {
             */
 
             if ( rs.next() ) {
-                String role = rs.getString( "role" );
-                int id = rs.getInt( "id" );
+                String role = rs.getString( "RoleId" );
+                int id = rs.getInt( "UserId" );
                 User user = new User( email, password, role );
                 user.setId( id );
                 return user;

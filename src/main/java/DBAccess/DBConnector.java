@@ -14,7 +14,7 @@ public class DBConnector {
 
         try {
             String driver, url, username, password, nameDB;
-            nameDB = "useradmin";
+            nameDB = "cupcake";
             driver = "com.mysql.cj.jdbc.Driver";
             url = "jdbc:mysql://localhost:3306/" + nameDB + "?verifyServerCertificate=false&useSSL=true&serverTimezone=UTC";
             username = "root";
