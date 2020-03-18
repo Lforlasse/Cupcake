@@ -21,7 +21,15 @@ public class Register extends Command {
             session.setAttribute("email",email);
             session.setAttribute( "user", user );
             session.setAttribute( "role", user.getRole() );
-            return user.getRole() + "page";
+
+           switch (user.getRole()) {
+               case "20":
+                   return "customerpage";
+               case "10":
+                   return "emoployeepage";
+               default:
+                   return "index";
+           }
         } else {
             throw new LoginSampleException( "the two passwords did not match" );
         }
