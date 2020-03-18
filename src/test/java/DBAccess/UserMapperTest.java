@@ -25,6 +25,10 @@ public class UserMapperTest {
     private static String HOST = "46.101.253.149";
 
     @Before
+
+    //TODO Setup til testkode
+    //Skal rettes fra skabelon connector til den nye connector (joakims implementation)
+    /*
     public void setUp() {
         try {
             // awoid making a new connection for each test
@@ -48,7 +52,7 @@ public class UserMapperTest {
             System.out.println( "Could not open connection to database: " + ex.getMessage() );
         }
     }
-
+*/
     @Test
     public void testSetUpOK() {
         // Just check that we have a connection.

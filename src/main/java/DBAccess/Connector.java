@@ -8,12 +8,12 @@ import java.sql.SQLException;
  The purpose of Connector is to...
 
  @author kasper
- */
+
 public class Connector {
     //TODO, Joakims DBConnector system med queries osv.
-    private static final String URL = "jdbc:mysql://localhost:3306/useradmin";
+    private static final String URL = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=UTC";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "admin";
 
     private static Connection singleton;
 
@@ -29,5 +29,4 @@ public class Connector {
         return singleton;
     }
 
-}
-
+}*/

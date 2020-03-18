@@ -18,7 +18,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `users` WRITE;
-INSERT INTO `users` VALUES 
+INSERT INTO `users` VALUES
 (1,'jens@somewhere.com','jensen','customer'),
 (2,'ken@somewhere.com','kensen','customer'),
 (3,'robin@somewhere.com','batman','employee');
