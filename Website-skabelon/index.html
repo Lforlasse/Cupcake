@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Olsker Cupcakes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center mx-auto container">
+    <div class="jumbotron text-center responsive_img header fill">
+        <img class="responsive_img" src="img/olskercupcakes.png" alt="Brand Logo">
+    </div>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Forside</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sortiment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">OLSKER CUPCAKES</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="dropdown open mr-auto">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b><span class="caret"></span></a>
+                    <!-- HUSK AT FÅ DEN ALIGNED RIGHT -->
+                    <ul id="login-dp" class="dropdown-menu">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12 text-center"> Login gennem
+                                    <form class="form dropdown-form" role="form" method="post" action="login" accept-charset="UTF-8"
+                                          id="login-nav">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail2"
+                                                   placeholder="Email address" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2"
+                                                   placeholder="Password" required="">
+                                            <div class="help-block text-right"><a href="">Glemt password?</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="login" class="btn btn-primary btn-block">Login</button>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> keep me logged-in
+                                            </label>
+                                        </div>
+                                    </form>
+                                    <div class="bottom text-center">
+                                        <a href="#"><b>Bliv Medlem</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- MANGLER ICON -->
+                <li class="nav-item text-center" id="cart-btn">
+                    <button type="cart" class="btn btn-primary btn-block">
+                        CART
+                        <a href="#" class="nav-link" data-toggle="modal" data-target="#"></a>
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron text-center">
+        indhold
+    </div>
+
+    <div class="jumbotron text-center footerBackground">
+        <p>Footer</p>
+    </div>
+</div>
+</body>
+</html>
