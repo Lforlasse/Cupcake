@@ -1,3 +1,10 @@
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
 .container{
     max-width: 1200px;
     background: none!important;
@@ -30,25 +37,22 @@
    background: none!important;
  }
 
- .navbar{
-     border-radius: 5px;
- }
-
 .jumbotron{
     margin-bottom: 1rem!important;
     margin-top: 1rem!important;
 }
 
+.navbar{
+     border-radius: 5px;
+}
+
 .dropdown-menu{
-    width: 350px;
+    width: 330px;
 }
 
 .dropdown-toggle{
     margin: 0;
-    position: sticky;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    line-height: 35px;
 }
 
 .dropdown-form{
@@ -62,4 +66,5 @@
 .footerBackground p{
     color: aliceblue;
 }
+
 
