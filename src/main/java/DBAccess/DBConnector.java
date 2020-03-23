@@ -31,7 +31,7 @@ public class DBConnector {
         return null;
     }
 
-    static void updateSQL(String query) {
+    public static void updateSQL(String query) {
         Statement st = null;
         try {
             try {
@@ -58,7 +58,7 @@ public class DBConnector {
         }
     }
 
-    static ResultSet querySQL(String query) {
+    public static ResultSet querySQL(String query) {
         Statement st;
         ResultSet rs = null;
         try {

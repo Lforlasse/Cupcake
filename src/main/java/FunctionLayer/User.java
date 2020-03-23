@@ -26,18 +26,14 @@ import java.sql.Statement;
         private String email;
         private String password; // Should be hashed and secured
         private String role;
-        private double balance;
-        private String username;
-        private Cart cart;
+        private double balance = 0;
+        private String username = ""; //Burde være medlemsnr.
+        private Cart cart; //Oprettes først når det bliver nødvændigt.
 
-        public User( String email, String password, String role, Cart cart, double balance, String username ) {
+        public User( String email, String password, String role ) {
             this.email = email;
             this.password = password;
             this.role = role;
-            this.balance = balance;
-            this.cart = cart;
-            this.username
-
         }
 
     public static void createUser( User user ) throws LoginSampleException {
@@ -153,7 +149,7 @@ import java.sql.Statement;
         this.id = id;
     }
 
-    public int getBalance() {
+    public double getBalance() {
             return balance;
         }
 
