@@ -37,13 +37,14 @@
    background: none!important;
  }
 
+
 .jumbotron{
     margin-bottom: 1rem!important;
     margin-top: 1rem!important;
 }
 
 .navbar{
-     border-radius: 5px;
+    border-radius: 5px;
 }
 
 .dropdown-menu{
@@ -57,6 +58,12 @@
 
 .dropdown-form{
     margin: 10px;
+}
+
+.context {
+    border-radius: 5px;
+    background-color: #ffffff!important;
+    margin: 0px;
 }
 
 .footerBackground{
