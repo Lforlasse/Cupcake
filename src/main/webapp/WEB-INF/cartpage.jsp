@@ -6,11 +6,11 @@
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
     <%--Overskrift sættes ind her--%>
-    <h1>Employee page
+    <h1>Cart page
         ${sessionScope.message}
     </h1>
     <br>
-    <div class ="context">
+    <div class="context">
         <%--Indhold sættes ind her--%>
         Indhold her
     </div>

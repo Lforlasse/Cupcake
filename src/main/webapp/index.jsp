@@ -3,7 +3,7 @@
 <%@include file="includes/indexHeader.html" %>
 <%@include file="includes/indexNav.html" %>
 <!-- INDHOLDS DIV -->
-<div class="jumbotron text-center" style="padding: 2px!important;">
+<div class="jumbotron text-center" style="padding: 2px;">
     <br>
     <h1>Velkommen</h1>
     <br>
