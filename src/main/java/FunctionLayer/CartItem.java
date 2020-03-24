@@ -1,84 +1,143 @@
 package FunctionLayer;
 
+import java.util.List;
+
 public class CartItem {
 
-    public CartItem(int Sum, int productID, String productName, String description, int productPrice) {
-        this.Sum = Sum;
-        this.productID = productID;
-        this.productName = productName;
-        this.description = description;
-        this.productPrice = productPrice;
+    private String bottom, topping, itemId;
+    private int quantity;
+    private double price;
+
+    public static List<CartItem> getCartItemList() {
+        return cartItemList;
     }
 
-    private int Sum;
-    private int productID;
-    private String productName;
-    private String description;
-    private int productPrice;
+    public CartItem(int quantity, String topping, String bottom) {
+        this.quantity = quantity;
+        this.topping = topping;
+        this.bottom = bottom;
+        this.price = calcPrice(this.topping,this.bottom,this.quantity);
+        this.itemId = makeId(topping,bottom);
+    }//cartItem
+
+    private static double calcPrice(String topping, String bottom, int quantity) {
+        double sum = 0;
+
+        for (Topping top : Topping.getToppingsList()) {
+            if (topping.equals(top.getType())) {
+                sum += top.getPrice();
+            }
+        }//for topping
+
+        for (Bottom bot : Bottom.getBottomsList()) {
+            if (bottom.equals(bot.getType())) {
+                sum += bot.getPrice();
+            }//for bottom
+        }//for topping
+
+        sum = sum*quantity;
+        return sum;
+    }//calcPrice
+
+    private static String makeId(String topping,String bottom){
+        String id = "CID";
+        id = id+topping.toUpperCase().substring(0,2)+bottom.toUpperCase().substring(0,2);
+
+        return id;
+    }//makeId
+
+    public static List<CartItem> cartItemList;
 
 
-    private static double calcSum() {
+    private void addProduct(int quantity,String topping, String bottom) {
+        String ItemId = "CID"+topping.toUpperCase().substring(0,2)+bottom.toUpperCase().substring(0,2);
 
-        return 0.0;
+        for (CartItem item : CartItem.getCartItemList()) {
+            if (ItemId.equals(item.getItemId())) {
+                this.setQuantity(this.getQuantity()+quantity);
+                this.setPrice(calcPrice(this.topping,this.bottom,this.quantity));
+
+            } else {
+                new CartItem(quantity, topping, bottom);
+            }
+        }
+    }//addProduct
+
+    private void removeProduct(String itemId) {
+        int listCounter = -1;
+        int listSpot;
+
+        for (CartItem item : CartItem.getCartItemList()) {
+
+            listCounter += 1;
+
+            if (itemId.equals(item.getItemId())) {
+                listSpot = listCounter;
+                getCartItemList().remove(listSpot);
+            }
+        }
+        if (getCartItemList() != null) {
+            //TODO Calculate new order price
+        }
+    }//removeProduct
+
+    private void removeProductAmount(String itemId, int adjustment) {
+
+        for (CartItem item : CartItem.getCartItemList()) {
+            if (itemId.equals(item.getItemId())) {
+                this.setQuantity(this.getQuantity() - quantity);
+                this.setPrice(calcPrice(this.topping, this.bottom, this.quantity));
+            }
+        }
+    }//removeProductAmount
+
+    private void addProductAmount(String cartId, int adjustment) {
+
+        for (CartItem item : CartItem.getCartItemList()) {
+            if (itemId.equals(item.getItemId())) {
+                this.setQuantity(this.getQuantity() + quantity);
+                this.setPrice(calcPrice(this.topping, this.bottom, this.quantity));
+            }
+        }
+    }//addProductAmount
+
+        public String getBottom() {
+        return bottom;
     }
 
-    private void addProduct() {
-
+    public void setBottom(String bottom) {
+        this.bottom = bottom;
     }
 
-    private void removeProduct() {
-
+    public String getTopping() {
+        return topping;
     }
 
-    private void removeProductAmount() {
-
+    public void setTopping(String topping) {
+        this.topping = topping;
     }
 
-    private void addProductAmount() {
-
-    }
-    //TODO skal have en arraylist af products.
-    //TODO produkter skal sættes i HashMap.
-    //TODO knapper til at fortsætte til kassen eller tilføj mere (servlet?).
-    //TODO mus hover over produkt, skal vise et billede af produktet.
-
-    public int getSum() {
-        return Sum;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setSum(int sum) {
-        Sum = sum;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public int getProductID() {
-        return productID;
+    public double getPrice() {
+        return price;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(int productPrice) {
-        this.productPrice = productPrice;
-    }
-}
+}//class
