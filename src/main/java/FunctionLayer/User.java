@@ -3,45 +3,34 @@ package FunctionLayer;
 import java.util.List;
 
 import DBAccess.DBConnector;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-/**
- * The purpose of User is to...
- * @author kasper
- */
 
 
+public class User {
 
-    public class User {
+    private static List<User> users;
 
-        private static List<User> users;
+    private int userId; //Burde være medlemsnr.
+    private String email;
+    private String password; // Should be hashed and secured
+    private String role;
+    private double balance = 0;
+    private Cart cart; //Oprettes først når det bliver nødvændigt.
 
-        private int id; // just used to demo retrieval of autogen keys in UserMapper
-        private String email;
-        private String password; // Should be hashed and secured
-        private String role;
-        private double balance = 0;
-        private String username = ""; //Burde være medlemsnr.
-        private Cart cart; //Oprettes først når det bliver nødvændigt.
+    public User(String email, String password, String role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
-        public User( String email, String password, String role ) {
-            this.email = email;
-            this.password = password;
-            this.role = role;
-        }
-
-    public static void createUser( User user ) throws LoginSampleException {
+    public static void createUser(User user) throws LoginSampleException {
         String query = "INSERT INTO users (Email, UserPassword, RoleId) " + "VALUES (\""
                 + user.getEmail() + "\", \""
                 + user.getPassword() + "\", \""
                 + user.getRole() + "\")";
         DBConnector.updateSQL(query);
+        login(user.getEmail(), user.getPassword());
 
         /* LEGACY CODE
         try {
@@ -64,7 +53,7 @@ import java.sql.Statement;
         */
     }
 
-    public static User login( String email, String password ) throws LoginSampleException {
+    public static User login(String email, String password) throws LoginSampleException {
         String query = "SELECT UserId, RoleId FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
         ResultSet rs = DBConnector.querySQL(query);
 
@@ -77,51 +66,48 @@ import java.sql.Statement;
             ps.setString( 2, password );
             */
 
-            if ( rs.next() ) {
-                String role = rs.getString( "RoleId" );
-                int id = rs.getInt( "UserId" );
-                User user = new User( email, password, role );
-                user.setId( id );
+            if (rs.next()) {
+                String role = rs.getString("RoleId");
+                int userId = rs.getInt("UserId");
+                User user = new User(email, password, role);
+                user.setUserId(userId);
                 return user;
             } else {
-                throw new LoginSampleException( "Could not validate user" );
+                throw new LoginSampleException("Could not validate user");
             }
 
-        } catch ( SQLException ex ) {
+        } catch (SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
     }
 
 
-
-
     //TODO Metodekald på kundens CreditSaldo
-    public static int Balance(){
+    public static int Balance() {
 
         return 0;
     }
 
     //TODO Permanent creditCalc, smides til databasen.
-    public static int creditCalcUser(){
+    public static int creditCalcUser() {
 
         return 0;
     }
 
 
-
     public Cart getCart() {
-            return cart;
-        }
+        return cart;
+    }
 
     public void setCart(Cart cart) {
-            this.cart = cart;
-        }
+        this.cart = cart;
+    }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail( String email ) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -129,7 +115,7 @@ import java.sql.Statement;
         return password;
     }
 
-    public void setPassword( String password ) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -137,38 +123,32 @@ import java.sql.Statement;
         return role;
     }
 
-    public void setRole( String role ) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId( int id ) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public double getBalance() {
-            return balance;
-        }
+        return balance;
+    }
 
     public void setBalance(int balance) {
-            this.balance = balance;
-        }
+        this.balance = balance;
+    }
 
 
-
-
-        @Override
-        public String toString() {
-            return "User{" + "username=" + username + ", balance=" + balance + ", password=" + password + ", email=" + email + '}';
-        }
+    @Override
+    public String toString() {
+        return "User{" + "username=" + userId + ", balance=" + balance + ", password=" + password + ", email=" + email + '}';
+    }
 }
-
-
-
-
 
 
 //TODO, Joakims DBConnector system med queries osv.

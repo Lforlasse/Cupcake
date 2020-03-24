@@ -13,7 +13,7 @@ import java.sql.Statement;
 
  @author kasper
  */
-public class UserMapper {
+public class UserMapperOLD {
 
     public static void createUser( User user ) throws LoginSampleException {
         String query = "INSERT INTO users (Email, UserPassword, RoleId) " + "VALUES (\""
@@ -60,7 +60,7 @@ public class UserMapper {
                 String role = rs.getString( "RoleId" );
                 int id = rs.getInt( "UserId" );
                 User user = new User( email, password, role );
-                user.setId( id );
+                user.setUserId( id );
                 return user;
             } else {
                 throw new LoginSampleException( "Could not validate user" );

@@ -1,7 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="includes/indexHeader.html" %>
-<%@include file="includes/indexNav.html" %>
+<c:choose>
+    <c:when test="${sessionScope.email != null}">
+        <%@include file="includes/loginNav.jsp" %>
+    </c:when>
+    <c:otherwise>
+        <%@include file="includes/nav.html" %>
+    </c:otherwise>
+</c:choose>
 <!-- INDHOLDS DIV -->
 <div class="jumbotron text-center" style="padding: 2px;">
     <br>

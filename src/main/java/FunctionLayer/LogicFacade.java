@@ -1,7 +1,5 @@
 package FunctionLayer;
 
-import DBAccess.UserMapper;
-
 /**
  * The purpose of LogicFacade is to...
  * @author kasper
@@ -9,12 +7,12 @@ import DBAccess.UserMapper;
 public class LogicFacade {
 
     public static User login( String email, String password ) throws LoginSampleException {
-        return UserMapper.login( email, password );
+        return User.login( email, password );
     } 
 
     public static User createUser( String email, String password ) throws LoginSampleException {
         User user = new User(email, password, "20");
-        UserMapper.createUser( user );
+        User.createUser( user );
         return user;
     }
 

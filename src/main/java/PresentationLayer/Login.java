@@ -25,7 +25,7 @@ public class Login extends Command {
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );
         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
-        session.setAttribute("message", "NAVN(implementer i JAVA)");
+        session.setAttribute("name", email); //Der skal implementeres navn i databasen, hentes ind i User.class og udskrives her.
 
         switch (user.getRole()) {
             case "20":
@@ -33,6 +33,7 @@ public class Login extends Command {
             case "10":
                 return "employee";
             default:
+                session.setAttribute("error", "User role does not exist");
                 return "index";
         }
     }
