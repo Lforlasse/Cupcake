@@ -29,9 +29,9 @@ public class Login extends Command {
 
         switch (user.getRole()) {
             case "20":
-                return "customerpage";
+                return "customer";
             case "10":
-                return "emoployeepage";
+                return "emoployee";
             default:
                 return "index";
         }
