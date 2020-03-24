@@ -21,11 +21,11 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col">
-                <h3>Mine ordre</h3>
+                <h3>Mine ordrer</h3>
                 <p>
-                    <button type="button" class="btn btn-primary btn-block" value="Button">Se aktive ordre</button>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">Se aktive ordrer</button>
                     <br>
-                    <button type="button" class="btn btn-primary btn-block" value="Button">Se udførte ordre</button>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">Se udførte ordrer</button>
                     <br>
                 </p>
 
