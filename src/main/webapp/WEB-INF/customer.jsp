@@ -3,7 +3,7 @@
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
-    <%@include file="../includes/loginNav.jsp" %>
+        <%@include file="../includes/loginNav.jsp" %>
     </c:when>
     <c:otherwise>
         <%@include file="../includes/nav.html" %>
@@ -18,12 +18,65 @@
         ${sessionScope.name}
     </h1>
     <br>
-    <div class="context">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3>Mine ordre</h3>
+                <p>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">Se aktive ordre</button>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">Se udførte ordre</button>
+                    <br>
+                </p>
+
+                <h3>Olsker Cupcakes</h3>
+                <p>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">FAQ</button>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">Kundeservice</button>
+                </p>
+            </div>
+            <div class="col">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Mine data</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Credit</td>
+                        <td>INDSÆT KODE TIL credit balance</td>
+                    </tr>
+                    <tr>
+                        <td>Navn</td>
+                        <td>INDSÆT KODE TIL NAVN</td>
+                    </tr>
+                    <tr>
+                        <td>Kunde nr.</td>
+                        <td>LAV ATTRIBUT TIL KUNDENR</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>${sessionScope.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Adgangskode</td>
+                        <td>LAV ATTRIBUT TIL adgangskode (husk secretpassformat)</td>
+                    </tr>
+                    <tr>
+                        <td>Telefon</td>
+                        <td>LAV ATTRIBUT TIL TELEFON</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td>LAV ATTRIBUT TIL Adresse</td>
+                    </tr>
+                </table>
+                <button type="button" class="btn btn-primary btn-block" value="Button">Skift adgangskode</button>
+            </div>
+        </div>
         <c:if test="${requestScope.error!= null}">
             <h2>Error ! </h2>
             ${requestScope.error}
