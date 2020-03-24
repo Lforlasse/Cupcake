@@ -31,7 +31,7 @@ public class Login extends Command {
             case "20":
                 return "customer";
             case "10":
-                return "emoployee";
+                return "employee";
             default:
                 return "index";
         }
