@@ -1,8 +1,7 @@
 package PresentationLayer;
 
-import FunctionLayer.Bottom;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.Topping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,13 +13,12 @@ public class Redirect extends Command {
 
         if ("assortment".equals(page)) {
             if (request.getServletContext().getAttribute("toppingList") == null) {
-                request.getServletContext().setAttribute("toppingList", Topping.getToppingsList());
+                request.getServletContext().setAttribute("toppingList", LogicFacade.getAllToppings());
             }
             if (request.getServletContext().getAttribute("bottomList") == null) {
-                request.getServletContext().setAttribute("bottomList", Bottom.getBottomsList());
+                request.getServletContext().setAttribute("bottomList", LogicFacade.getAllBottoms());
             }
         }
-
         return page;
     }
 }

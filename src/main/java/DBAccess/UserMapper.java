@@ -2,25 +2,26 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  The purpose of UserMapper is to...
 
  @author kasper
  */
-public class UserMapperOLD {
+public class UserMapper {
 
     public static void createUser( User user ) throws LoginSampleException {
+        String email = user.getEmail();
+        String password = user.getPassword();
+        String role = user.getRole();
         String query = "INSERT INTO users (Email, UserPassword, RoleId) " + "VALUES (\""
-                + user.getEmail() + "\", \""
-                + user.getPassword() + "\", \""
-                + user.getRole() + "\")";
+                + email + "\", \""
+                + password + "\", \""
+                + role + "\")";
         DBConnector.updateSQL(query);
+        login(email, password);
 
         /* LEGACY CODE
         try {

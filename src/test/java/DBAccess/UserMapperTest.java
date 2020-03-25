@@ -60,20 +60,20 @@ public class UserMapperTest {
     @Test
     public void testLogin01() throws LoginSampleException {
         // Can we log in
-        User user = UserMapperOLD.login( "jens@somewhere.com", "jensen" );
+        User user = UserMapper.login( "jens@somewhere.com", "jensen" );
         assertTrue( user != null );
     }
 
     @Test( expected = LoginSampleException.class )
     public void testLogin02() throws LoginSampleException {
         // We should get an exception if we use the wrong password
-        User user = UserMapperOLD.login( "jens@somewhere.com", "larsen" );
+        User user = UserMapper.login( "jens@somewhere.com", "larsen" );
     }
 
     @Test
     public void testLogin03() throws LoginSampleException {
         // Jens is supposed to be a customer
-        User user = UserMapperOLD.login( "jens@somewhere.com", "jensen" );
+        User user = UserMapper.login( "jens@somewhere.com", "jensen" );
         assertEquals( "customer", user.getRole() );
     }
 
@@ -82,8 +82,8 @@ public class UserMapperTest {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
         User original = new User( "king@kong.com", "uhahvorhemmeligt", "konge" );
-        UserMapperOLD.createUser( original );
-        User retrieved = UserMapperOLD.login( "king@kong.com", "uhahvorhemmeligt" );
+        UserMapper.createUser( original );
+        User retrieved = UserMapper.login( "king@kong.com", "uhahvorhemmeligt" );
         assertEquals( "konge", retrieved.getRole() );
     }
 }

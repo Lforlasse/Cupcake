@@ -20,13 +20,14 @@
         <div class="context-item">
             <form class="text-center" style="margin: auto; width: 300px;">
                 <select class="form-control" style="margin-bottom: 10px;">
-                    <c:forEach items="${toppingList}">
-                        <option value="${toppingList.getType}"></option>
+                    <c:forEach var="topping" items="${applicationScope.toppingList}">
+                        <option value="${topping.type}">${topping.type}</option>
                     </c:forEach>
-                    <option>Top</option>
                 </select>
                 <select class="form-control" style="margin-bottom: 10px;">
-                    <option>Bund</option>
+                    <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                        <option value="${bottom.type}">${bottom.type}</option>
+                    </c:forEach>
                 </select>
                 <div class="form-group">
                     <label for="antal" class="sr-only">Antal</label>
