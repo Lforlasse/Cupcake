@@ -13,7 +13,7 @@
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
     <%--Overskrift sættes ind her--%>
-    <h1>Sortiement page
+    <h1>Sortiment page
     </h1>
     <br>
     <div class="context">
