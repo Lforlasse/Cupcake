@@ -1,12 +1,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<c:choose>
+    <c:when test="${sessionScope.role != '10'}">
+        <c:redirect url="FrontController?target=redirect&page=index"></c:redirect>
+    </c:when>
+</c:choose>
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
-        <%@include file="../includes/loginNav.jsp" %>
+        <%@include file="../includes/nav.jsp" %>
     </c:when>
     <c:otherwise>
-        <%@include file="../includes/nav.html" %>
+        <%@include file="../includes/loginNav.html" %>
     </c:otherwise>
 </c:choose>
 <!-- INDHOLDS DIV -->
@@ -40,7 +45,8 @@
                 <p>
                     <button type="button" class="btn btn-primary btn-block" value="Button">Produkt-oversigt</button>
                     <br>
-                    <button type="button" class="btn btn-primary btn-block" value="Button">Administrer produkter</button>
+                    <button type="button" class="btn btn-primary btn-block" value="Button">Administrer produkter
+                    </button>
                 </p>
             </div>
             <div class="col">
@@ -53,36 +59,36 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Credit</td>
-                        <td>INDSÆT KODE TIL credit balance</td>
+                        <td>Kredit</td>
+                        <td>${sessionScope.balance}</td>
                     </tr>
                     <tr>
                         <td>Navn</td>
-                        <td>INDSÆT KODE TIL NAVN</td>
-                    </tr>
-                    <tr>
-                        <td>Kunde nr.</td>
-                        <td>LAV ATTRIBUT TIL KUNDENR</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
                         <td>${sessionScope.name}</td>
                     </tr>
                     <tr>
+                        <td>Kunde nr.</td>
+                        <td>${sessionScope.userId}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>${sessionScope.email}</td>
+                    </tr>
+                    <tr>
                         <td>Adgangskode</td>
-                        <td>LAV ATTRIBUT TIL adgangskode (husk secretpassformat)</td>
+                        <td>********</td>
                     </tr>
                     <tr>
                         <td>Telefon</td>
-                        <td>LAV ATTRIBUT TIL TELEFON</td>
+                        <td>${sessionScope.phone}</td>
                     </tr>
                     <tr>
                         <td>Adresse</td>
-                        <td>LAV ATTRIBUT TIL Adresse</td>
+                        <td>${sessionScope.address}</td>
                     </tr>
                 </table>
                 <button type="button" class="btn btn-primary btn-block" value="Button">Skift adgangskode</button>
             </div>
         </div>
-</div>
+    </div>
 <%@include file="../includes/footer.html" %>

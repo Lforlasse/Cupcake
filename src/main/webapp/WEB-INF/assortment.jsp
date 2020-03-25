@@ -3,10 +3,10 @@
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
-        <%@include file="../includes/loginNav.jsp" %>
+        <%@include file="../includes/nav.jsp" %>
     </c:when>
     <c:otherwise>
-        <%@include file="../includes/nav.html" %>
+        <%@include file="../includes/loginNav.html" %>
     </c:otherwise>
 </c:choose>
 <!-- INDHOLDS DIV -->

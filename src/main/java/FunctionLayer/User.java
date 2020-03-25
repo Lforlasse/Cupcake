@@ -17,11 +17,17 @@ public class User {
     private String role;
     private double balance = 0;
     private Cart cart; //Oprettes først når det bliver nødvændigt.
+    private String phone;
+    private String address;
 
     public User(String email, String password, String role) {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.userId = userId;
+        this.balance = balance;
+        this.phone = phone;
+        this.address = address;
     }
 
     public static void createUser(User user) throws LoginSampleException {

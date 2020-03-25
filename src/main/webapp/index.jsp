@@ -2,11 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="includes/indexHeader.html" %>
 <c:choose>
-    <c:when test="${sessionScope.email != null}">
-        <%@include file="includes/loginNav.jsp" %>
+    <c:when test="${sessionScope.role != null}">
+        <%@include file="includes/nav.jsp" %>
     </c:when>
     <c:otherwise>
-        <%@include file="includes/nav.html" %>
+        <%@include file="includes/loginNav.html" %>
     </c:otherwise>
 </c:choose>
 <!-- INDHOLDS DIV -->

@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS `cupcake`;
 CREATE DATABASE IF NOT EXISTS `cupcake`;
 use cupcake;
 
@@ -18,13 +19,16 @@ CREATE TABLE Users (
     UserPassword varchar(20) NOT NULL,
     Credit decimal(9,2) DEFAULT 0,
     RoleId int DEFAULT 20,
+    FullName varchar(100),
+    Phone varchar(20),
+    Address varchar (200),
     PRIMARY KEY (UserId),
     FOREIGN KEY (RoleId) REFERENCES Roles (RoleID)
 );
 ALTER TABLE Users auto_increment=1000;
 
-INSERT INTO Users (Email, UserPassword)
-Values ("Alice@Cooper.com","pass1234");
+INSERT INTO Users (Email, UserPassword, Fullname, Phone, Address)
+Values ("Alice@Cooper.com","pass1234", "Alice Cooper", "60607070", "Nørgaardsvej 30, DK-2800 Kgs. Lyngby");
 INSERT INTO Users (Email, UserPassword)
 Values ("Frank@Zappa.com","pass1234");
 INSERT INTO Users (Email, UserPassword)
