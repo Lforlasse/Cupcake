@@ -1,5 +1,8 @@
 package FunctionLayer;
 
+import DBAccess.BottomMapper;
+import DBAccess.ToppingMapper;
+
 import java.util.List;
 
 public class CartItem {
@@ -7,6 +10,7 @@ public class CartItem {
     private String bottom, topping, itemId;
     private int quantity;
     private double price;
+    private static List<CartItem> cartItemList;
 
     public static List<CartItem> getCartItemList() {
         return cartItemList;
@@ -16,20 +20,21 @@ public class CartItem {
         this.quantity = quantity;
         this.topping = topping;
         this.bottom = bottom;
-        this.price = calcPrice(this.topping,this.bottom,this.quantity);
+        this.price = calcPrice(quantity, topping, bottom);
         this.itemId = makeId(topping,bottom);
+
     }//cartItem
 
-    private static double calcPrice(String topping, String bottom, int quantity) {
+    public static double calcPrice(int quantity, String topping, String bottom) {
         double sum = 0;
 
-        for (Topping top : Topping.getToppingsList()) {
+        for (Topping top : ToppingMapper.getAllToppings()) {
             if (topping.equals(top.getType())) {
                 sum += top.getPrice();
             }
         }//for topping
 
-        for (Bottom bot : Bottom.getBottomsList()) {
+        for (Bottom bot : BottomMapper.getAllBottoms()) {
             if (bottom.equals(bot.getType())) {
                 sum += bot.getPrice();
             }//for bottom
@@ -46,62 +51,7 @@ public class CartItem {
         return id;
     }//makeId
 
-    public static List<CartItem> cartItemList;
-
-
-    private void addProduct(int quantity,String topping, String bottom) {
-        String ItemId = "CID"+topping.toUpperCase().substring(0,2)+bottom.toUpperCase().substring(0,2);
-
-        for (CartItem item : CartItem.getCartItemList()) {
-            if (ItemId.equals(item.getItemId())) {
-                this.setQuantity(this.getQuantity()+quantity);
-                this.setPrice(calcPrice(this.topping,this.bottom,this.quantity));
-
-            } else {
-                new CartItem(quantity, topping, bottom);
-            }
-        }
-    }//addProduct
-
-    private void removeProduct(String itemId) {
-        int listCounter = -1;
-        int listSpot;
-
-        for (CartItem item : CartItem.getCartItemList()) {
-
-            listCounter += 1;
-
-            if (itemId.equals(item.getItemId())) {
-                listSpot = listCounter;
-                getCartItemList().remove(listSpot);
-            }
-        }
-        if (getCartItemList() != null) {
-            //TODO Calculate new order price
-        }
-    }//removeProduct
-
-    private void removeProductAmount(String itemId, int adjustment) {
-
-        for (CartItem item : CartItem.getCartItemList()) {
-            if (itemId.equals(item.getItemId())) {
-                this.setQuantity(this.getQuantity() - quantity);
-                this.setPrice(calcPrice(this.topping, this.bottom, this.quantity));
-            }
-        }
-    }//removeProductAmount
-
-    private void addProductAmount(String cartId, int adjustment) {
-
-        for (CartItem item : CartItem.getCartItemList()) {
-            if (itemId.equals(item.getItemId())) {
-                this.setQuantity(this.getQuantity() + quantity);
-                this.setPrice(calcPrice(this.topping, this.bottom, this.quantity));
-            }
-        }
-    }//addProductAmount
-
-        public String getBottom() {
+    public String getBottom() {
         return bottom;
     }
 
