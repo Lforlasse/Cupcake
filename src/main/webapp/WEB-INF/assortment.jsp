@@ -20,6 +20,9 @@
         <div class="context-item">
             <form class="text-center" style="margin: auto; width: 300px;">
                 <select class="form-control" style="margin-bottom: 10px;">
+                    <c:forEach items="${toppingList}">
+                        <option value="${toppingList.getType}"></option>
+                    </c:forEach>
                     <option>Top</option>
                 </select>
                 <select class="form-control" style="margin-bottom: 10px;">

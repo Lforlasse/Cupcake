@@ -62,5 +62,4 @@
     </c:if>
     <br><br>
 </div>
-</div>
 <%@include file="includes/indexFooter.html" %>

@@ -16,6 +16,7 @@ abstract class Command {
         commands.put("register", new Register());
         commands.put("redirect", new Redirect());
         commands.put("logout", new Logout());
+        commands.put("list", new List());
     }
 
     static Command from(HttpServletRequest request) {
@@ -28,5 +29,4 @@ abstract class Command {
 
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
             throws LoginSampleException;
-
 }
