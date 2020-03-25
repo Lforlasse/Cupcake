@@ -2,14 +2,11 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- The purpose of UserMapper is to...
-
- @author kasper
- */
 public class UserMapper {
 
     public static void createUser( User user ) throws LoginSampleException {
@@ -45,7 +42,7 @@ public class UserMapper {
     }
 
     public static User login( String email, String password ) throws LoginSampleException {
-        String query = "SELECT UserId, RoleId FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
+        String query = "SELECT UserId, RoleId, Credit, Fullname, Phone, Address FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
         ResultSet rs = DBConnector.querySQL(query);
 
         try {
@@ -59,9 +56,17 @@ public class UserMapper {
 
             if ( rs.next() ) {
                 String role = rs.getString( "RoleId" );
-                int id = rs.getInt( "UserId" );
-                User user = new User( email, password, role );
-                user.setUserId( id );
+                int userId = rs.getInt( "UserId" );
+                double balance = rs.getBigDecimal("Credit").doubleValue();
+                String fullName = rs.getString("Fullname");
+                String phone = rs.getString("Phone");
+                String address = rs.getString("Address");
+                User user = new User( email, password, role);
+                user.setUserId( userId );
+                user.setBalance(balance);
+                user.setPhone(phone);
+                user.setAddress(address);
+                user.setFullName(fullName);
                 return user;
             } else {
                 throw new LoginSampleException( "Could not validate user" );
