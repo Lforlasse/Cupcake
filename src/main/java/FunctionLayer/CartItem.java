@@ -3,18 +3,12 @@ package FunctionLayer;
 import DBAccess.BottomMapper;
 import DBAccess.ToppingMapper;
 
-import java.util.List;
-
 public class CartItem {
 
     private String bottom, topping, itemId;
     private int quantity;
     private double price;
-    private static List<CartItem> cartItemList;
 
-    public static List<CartItem> getCartItemList() {
-        return cartItemList;
-    }
 
     public CartItem(int quantity, String topping, String bottom) {
         this.quantity = quantity;
@@ -37,8 +31,8 @@ public class CartItem {
         for (Bottom bot : BottomMapper.getAllBottoms()) {
             if (bottom.equals(bot.getType())) {
                 sum += bot.getPrice();
-            }//for bottom
-        }//for topping
+            }
+        }//for bottom
 
         sum = sum*quantity;
         return sum;
@@ -85,9 +79,5 @@ public class CartItem {
 
     public String getItemId() {
         return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
     }
 }//class
