@@ -29,4 +29,8 @@ public class LogicFacade {
     public static void addToCart(Cart cart, int quantity, String topping, String bottom) {
         cart.addCartItem(quantity, topping, bottom);
     }
+
+    public static ArrayList<Item> getCartItems(ArrayList<Item> itemList) {
+        return itemList;
+    }
 }

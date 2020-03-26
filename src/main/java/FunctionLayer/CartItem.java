@@ -16,8 +16,6 @@ public class CartItem {
         return cartItemList;
     }
 
-
-
     public CartItem(int quantity, String topping, String bottom) {
         this.quantity = quantity;
         this.topping = topping;
