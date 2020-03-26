@@ -4,13 +4,16 @@ import FunctionLayer.Cart;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserMapper {
+
+    public static ArrayList<User> getAllUsers() {
+        return null;
+    }
 
     public static void createUser( User user ) throws LoginSampleException {
         String email = user.getEmail();

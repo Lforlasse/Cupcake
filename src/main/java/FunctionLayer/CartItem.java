@@ -16,7 +16,6 @@ public class CartItem {
         this.bottom = bottom;
         this.price = calcPrice(quantity, topping, bottom);
         this.itemId = makeId(topping,bottom);
-
     }//cartItem
 
     public static double calcPrice(int quantity, String topping, String bottom) {

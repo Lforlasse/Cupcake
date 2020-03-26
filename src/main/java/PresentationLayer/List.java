@@ -2,8 +2,6 @@ package PresentationLayer;
 
 import FunctionLayer.Topping;
 import FunctionLayer.Bottom;
-import FunctionLayer.Cart;
-import FunctionLayer.CartItem;
 import FunctionLayer.LoginSampleException;
 
 
