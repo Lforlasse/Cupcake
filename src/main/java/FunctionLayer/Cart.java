@@ -5,7 +5,7 @@ import java.util.List;
 public class Cart {
 
     private int userId;
-    private static List<CartItem> userCart;
+    private List<CartItem> userCart;
     Double cartPrice;
 
     public Cart(int userId) {
@@ -14,7 +14,8 @@ public class Cart {
         this.cartPrice = sumCartPrice();
     }
 
-    private static double sumCartPrice() {
+    //beregn indhold af userCart
+    private double sumCartPrice() {
         double sum = 0;
 
         if (userCart.isEmpty()) {
@@ -31,12 +32,14 @@ public class Cart {
         return sum;
     }//sumCartPrice
 
-   public void addCartItem(int quantity, String topping, String bottom){
+    //Tilføj en varelinje til userCart
+    public void addCartItem(int quantity, String topping, String bottom){
        getUserCart().add(new CartItem(quantity, topping, bottom));
 
        sumCartPrice();
    }//addCartItem
 
+    //Fjern en varelinje fra userCart
     private void removeCartItem(String itemId) {
         int listCounter = -1;
         int listSpot;
@@ -53,11 +56,13 @@ public class Cart {
         sumCartPrice();
     }//removeCartItem
 
+    //Fjern all varelinjer fra userCart
     private void removeAllCartItems(){
         userCart.removeAll(userCart);
         sumCartPrice();
     }//removeAllCartItems
 
+    //Forøg antallet af et produkt i en varelinje
     private void addCartItemAmount(String itemId, int adjustment) {
 
         for (CartItem item : getUserCart()) {
@@ -69,6 +74,8 @@ public class Cart {
         sumCartPrice();
     }//addCartItemAmount
 
+    //Formindsk antallet af et produkt i en varelinje
+    //Fare for negative ordrer
     private void reduceCartItemAmount(String itemId, int adjustment) {
 
         for (CartItem item : CartItem.getCartItemList()) {
@@ -79,6 +86,15 @@ public class Cart {
         }
         sumCartPrice();
     }//reduceCartItemAmount
+
+    //Overfør userCart varelinjer til DB
+    private void createOrder(){
+
+        Order.newOrder(this.userId, this.cartPrice, this.userCart);
+
+        removeAllCartItems();
+        sumCartPrice();
+    }//createOrder
 
 
     public int getUserId() {
