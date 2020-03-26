@@ -13,10 +13,6 @@ public class CartItem {
     private double price;
     private static List<CartItem> cartItemList;
 
-    public static List<CartItem> getCartItemList() {
-        return cartItemList;
-    }
-
     //TESTDATA
     public static List<Item>getPopulatedCartItemList(){
         Item item1 = new Item(1, "something", 10.5, 2, 21);
@@ -54,8 +50,8 @@ public class CartItem {
         for (Bottom bot : BottomMapper.getAllBottoms()) {
             if (bottom.equals(bot.getType())) {
                 sum += bot.getPrice();
-            }//for bottom
-        }//for topping
+            }
+        }//for bottom
 
         sum = sum*quantity;
         return sum;
@@ -102,9 +98,5 @@ public class CartItem {
 
     public String getItemId() {
         return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
     }
 }//class

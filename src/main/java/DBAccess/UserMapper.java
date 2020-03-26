@@ -7,6 +7,7 @@ import FunctionLayer.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserMapper {
 
@@ -83,4 +84,51 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-}
+
+    //Vis alle brugere
+    public static List seeAllUsers() {
+        List<String> userList = new ArrayList<>();
+        String userEmail, users;
+        int userId, userCredit;
+
+        String query =  "SELECT UserId,Email,Credit FROM users" +
+                "WHERE RoleId = 20;";
+        ResultSet rs = DBConnector.querySQL(query);
+
+        try {
+            while(rs.next()) {
+                userId = rs.getInt("UserId");
+                userEmail = rs.getString("Email");
+                userCredit = rs.getInt("Credit");
+
+                users = "UserId:\t"+userId+"\nEmail:\t"+userEmail+"\nCredit:\t"+userCredit;
+                userList.add(users);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }//seeAllUsers
+
+    //Tilføj positiv ændring på en brugers credit
+    public static void addUserBalance(int userId, double creditAdjust) {
+
+        String query =  "UPDATE users" +
+                "SET Credit = Credit + " + creditAdjust +
+                "WHERE UserId = " + userId + ";";
+        DBConnector.updateSQL(query);
+    }//addUserBalance
+
+    //Tilføj negativ ændring på en brugers credit
+    public static void subtractUserBalance(int userId, double creditAdjust) {
+
+        String query =  "UPDATE users" +
+                "SET Credit = Credit + -" + creditAdjust +
+                "WHERE UserId = " + userId + ";";
+        DBConnector.updateSQL(query);
+    }//subtractUserBalance
+
+
+
+
+}//class
