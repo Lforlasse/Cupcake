@@ -18,7 +18,6 @@ public class UserMapper {
                 + password + "\", \""
                 + role + "\")";
         DBConnector.updateSQL(query);
-        login(email, password);
 
         /* LEGACY CODE
         try {

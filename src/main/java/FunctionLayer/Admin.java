@@ -9,11 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Admin { //midlertidig class indtil User virker.
-//public class Admin extends User {
-//    public Admin(String email, String password, String role) {
-//       super(email, password, role);
-//   }
+//public class Admin { //midlertidig class indtil User virker.
+public class Admin extends User {
+
+    public Admin(String email, String password, String role) {
+       super(email, password, role);
+   }//Admin
+
 
     //Vis alle ordrer fra en enkelt bruger
     public static List seeOrdersDB(int userId) {
