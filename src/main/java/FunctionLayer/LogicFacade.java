@@ -6,10 +6,6 @@ import DBAccess.UserMapper;
 
 import java.util.ArrayList;
 
-/**
- * The purpose of LogicFacade is to...
- * @author kasper
- */
 public class LogicFacade {
 
     public static User login( String email, String password ) throws LoginSampleException {
@@ -28,5 +24,9 @@ public class LogicFacade {
 
     public static ArrayList<Bottom> getAllBottoms(){
         return BottomMapper.getAllBottoms();
+    }
+
+    public static void addToCart(Cart cart, int quantity, String topping, String bottom) {
+        cart.addCartItem(quantity, topping, bottom);
     }
 }

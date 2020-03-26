@@ -11,7 +11,7 @@ public class Cart {
     public Cart(int userId) {
         this.userId = userId;
         this.userCart = getUserCart();
-        this.cartPrice = sumCartPrice();
+        // this.cartPrice = sumCartPrice();
     }
 
     //beregn indhold af userCart

@@ -18,22 +18,25 @@
     <br>
     <div class="context">
         <div class="context-item">
-            <form class="text-center" style="margin: auto; width: 300px;">
-                <select class="form-control" style="margin-bottom: 10px;">
+            <form class="form" role="form" name="addCupcake" action="FrontController" method="POST" style="margin: auto; width: 300px;">
+                <input type="hidden" name="target" value="addCupcake">
+                <label for="topping"></label>
+                <select id="topping" name="topping" class="form-control" style="margin-bottom: 10px;">
                     <c:forEach var="topping" items="${applicationScope.toppingList}">
-                        <option value="${topping.type}">${topping.type}</option>
+                        <option name="" value="${topping.type}">${topping.type}</option>
                     </c:forEach>
                 </select>
-                <select class="form-control" style="margin-bottom: 10px;">
+                <label for="bottom"></label>
+                <select id="bottom" name="bottom" class="form-control" style="margin-bottom: 10px;">
                     <c:forEach var="bottom" items="${applicationScope.bottomList}">
                         <option value="${bottom.type}">${bottom.type}</option>
                     </c:forEach>
                 </select>
                 <div class="form-group">
-                    <label for="antal" class="sr-only">Antal</label>
-                    <input type="text" class="form-control" id="antal" placeholder="Antal">
+                    <label for="quantity" class="sr-only">Antal</label>
+                    <input id="quantity" name="quantity" type="text" class="form-control"  placeholder="Antal">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Tilføj</button>
+                <button type="submit" class="btn btn-primary btn-block" value="submit">Tilføj</button>
             </form>
         </div>
     </div>

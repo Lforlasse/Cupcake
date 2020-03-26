@@ -25,6 +25,7 @@ public class Login extends Command {
         session.setAttribute("address", user.getAddress());
         session.setAttribute("userId", user.getUserId());
         session.setAttribute("balance", user.getBalance());
+        session.setAttribute("cart", user.getCart());
 
         switch (user.getRole()) {
             case "20":
