@@ -6,7 +6,7 @@ public class Cart {
 
     private int userId;
     private List<CartItem> userCart;
-    Double cartPrice;
+    double cartPrice;
 
     public Cart(int userId) {
         this.userId = userId;
@@ -34,7 +34,7 @@ public class Cart {
 
     //Tilføj en varelinje til userCart
     public void addCartItem(int quantity, String topping, String bottom){
-       getUserCart().add(new CartItem(quantity, topping, bottom));
+        userCart.add(new CartItem(quantity, topping, bottom));
 
        sumCartPrice();
    }//addCartItem
@@ -93,7 +93,6 @@ public class Cart {
         Order.newOrder(this.userId, this.cartPrice, this.userCart);
 
         removeAllCartItems();
-        sumCartPrice();
     }//createOrder
 
 

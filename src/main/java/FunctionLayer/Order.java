@@ -31,7 +31,7 @@ public static void newOrder (int userId, double cartPrice, List<CartItem> userCa
     private static int queryOrderNumber(int userId){
         int orderId = 0;
 
-        String query =  "SELECT MAX(orderId)" +
+        String query =  "SELECT MAX(OrderId)" +
                         "FROM orders" +
                         "WHERE userId ="+userId+";";
         ResultSet rs = DBConnector.querySQL(query);
