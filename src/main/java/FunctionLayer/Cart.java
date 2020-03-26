@@ -48,7 +48,7 @@ public class Cart {
             userCart.add(new CartItem(quantity, topping, bottom));
         }
         cartPrice = sumCartPrice();
-    }//addCartItem
+   }//addCartItem
 
     //Fjern en varelinje fra userCart
     private void removeCartItem(String itemId) {
@@ -126,3 +126,4 @@ public class Cart {
         this.cartPrice = cartPrice;
     }
 }//class
+
