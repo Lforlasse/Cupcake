@@ -16,7 +16,6 @@ abstract class Command {
         commands.put("register", new Register());
         commands.put("redirect", new Redirect());
         commands.put("logout", new Logout());
-        commands.put("list", new List());
         commands.put("addCupcake", new AddCupcake());
     }
 

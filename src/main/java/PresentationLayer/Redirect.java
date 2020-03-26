@@ -5,6 +5,8 @@ import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Redirect extends Command {
     @Override
@@ -18,6 +20,11 @@ public class Redirect extends Command {
             if (request.getServletContext().getAttribute("bottomList") == null) {
                 request.getServletContext().setAttribute("bottomList", LogicFacade.getAllBottoms());
             }
+        } else if ("cart".equals(page)) {
+            List<String> myList = new ArrayList();
+            myList.add("Hello");
+            myList.add("Hello");
+            request.getSession().setAttribute("myList", myList);
         }
         return page;
     }

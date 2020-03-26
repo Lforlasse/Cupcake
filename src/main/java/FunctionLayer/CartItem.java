@@ -16,6 +16,8 @@ public class CartItem {
         return cartItemList;
     }
 
+
+
     public CartItem(int quantity, String topping, String bottom) {
         this.quantity = quantity;
         this.topping = topping;
@@ -36,8 +38,8 @@ public class CartItem {
         for (Bottom bot : BottomMapper.getAllBottoms()) {
             if (bottom.equals(bot.getType())) {
                 sum += bot.getPrice();
-            }//for bottom
-        }//for topping
+            }
+        }//for bottom
 
         sum = sum*quantity;
         return sum;
@@ -84,9 +86,5 @@ public class CartItem {
 
     public String getItemId() {
         return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
     }
 }//class

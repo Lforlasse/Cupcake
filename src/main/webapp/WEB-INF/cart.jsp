@@ -12,13 +12,46 @@
 <!-- INDHOLDS DIV -->
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
-    <%--Overskrift sættes ind her--%>
-    <h1>Cart page
-    </h1>
+    <h1>Indkøbskurv</h1>
     <br>
     <div class="context">
-        <%--Indhold sættes ind her--%>
-        Indhold her
+
+        <div class="col table-responsive">
+            <table id="example" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Produkt nr.</th>
+                    <th>Produkt</th>
+                    <th>Pris</th>
+                    <th>Antal</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="element" items="${sessionScope.myList}">
+                <tr>
+                   <td>${element.toString()}</td>
+                </tr>
+                </c:forEach>
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="col">
+            <br>
+
+            <button type="button" style="float: right;" class="btn btn-primary" value="Button">Bekræft ordre</button>
+
+            <button type="button" style="float: left;" class="btn btn-primary" value="Button">Sortiment</button>
+            <br>
+            <br>
+
+        </div>
+
     </div>
+</div>
 </div>
 <%@include file="../includes/footer.html" %>
