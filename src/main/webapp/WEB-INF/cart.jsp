@@ -28,9 +28,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="element" items="${sessionScope.myList}">
+                <c:forEach var="topping" items="${sessionScope.items}">
                 <tr>
-                   <td>${element.toString()}</td>
+                   <td>JATAK</td>
                 </tr>
                 </c:forEach>
                 </tbody>
@@ -53,4 +53,6 @@
 
     </div>
 </div>
+</div>
 <%@include file="../includes/footer.html" %>
+
