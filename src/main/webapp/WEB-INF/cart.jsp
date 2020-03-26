@@ -28,9 +28,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="topping" items="${sessionScope.items}">
+                <c:forEach var="element" items="${sessionScope.items}">
                 <tr>
-                   <td>JATAK</td>
+                   <td>${element.toString()}</td>
                 </tr>
                 </c:forEach>
                 </tbody>
