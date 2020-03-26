@@ -14,33 +14,30 @@
     <br>
     <h1>Indkøbskurv</h1>
     <br>
-    <div class ="context">
+    <div class="context">
 
         <div class="col table-responsive">
-            <table id="example" class="table table-striped table-bordered" >
+            <table id="example" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th >Produkt nr.</th>
-                    <th >Produkt</th>
+                    <th>Produkt nr.</th>
+                    <th>Produkt</th>
                     <th>Pris</th>
-                    <th >Antal</th>
-                    <th >Total</th>
+                    <th>Antal</th>
+                    <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
-
-                <c:forEach var="element" items="${sessionScope.getCartItemList}">
+                <c:forEach var="topping" items="${sessionScope.items}">
                 <tr>
-
+                   <td>JATAK</td>
                 </tr>
                 </c:forEach>
-
-
+                </tbody>
 
             </table>
 
         </div>
-
 
 
         <div class="col">

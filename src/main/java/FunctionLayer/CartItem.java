@@ -3,6 +3,7 @@ package FunctionLayer;
 import DBAccess.BottomMapper;
 import DBAccess.ToppingMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartItem {
@@ -14,6 +15,23 @@ public class CartItem {
 
     public static List<CartItem> getCartItemList() {
         return cartItemList;
+    }
+
+    //TESTDATA
+    public static List<Item>getPopulatedCartItemList(){
+        Item item1 = new Item(1, "something", 10.5, 2, 21);
+        Item item2 = new Item(2, "somethingElse", 13, 2, 26);
+        Item item3 = new Item(3, "somethingNew", 15, 3, 45);
+        Item item4 = new Item(4, "somethingOld", 19, 1, 28);
+
+        ArrayList<Item> itemList = new ArrayList();
+
+        itemList.add(item1);
+        itemList.add(item2);
+        itemList.add(item3);
+        itemList.add(item4);
+
+        return itemList;
     }
 
     public CartItem(int quantity, String topping, String bottom) {
