@@ -1,17 +1,16 @@
 package FunctionLayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
 
     private int userId;
-    private List<CartItem> userCart;
-    double cartPrice;
+    private List<CartItem> userCart = new ArrayList<>();
+    private double cartPrice = 0;
 
     public Cart(int userId) {
         this.userId = userId;
-        this.userCart = getUserCart();
-        this.cartPrice = sumCartPrice();
     }
 
     //beregn indhold af userCart
@@ -45,10 +44,10 @@ public class Cart {
             }
         }
 
-        if(itemExists == false){
+        if(!itemExists){
             userCart.add(new CartItem(quantity, topping, bottom));
         }
-        sumCartPrice();
+        cartPrice = sumCartPrice();
    }//addCartItem
 
     //Fjern en varelinje fra userCart
@@ -65,13 +64,13 @@ public class Cart {
                 userCart.remove(listSpot);
             }
         }
-        sumCartPrice();
+        cartPrice = sumCartPrice();
     }//removeCartItem
 
     //Fjern all varelinjer fra userCart
     private void removeAllCartItems(){
-        userCart.removeAll(userCart);
-        sumCartPrice();
+        userCart = new ArrayList<>();
+        cartPrice = sumCartPrice();
     }//removeAllCartItems
 
     //Forøg antallet af et produkt i en varelinje
@@ -83,7 +82,7 @@ public class Cart {
                 item.setPrice(CartItem.calcPrice(item.getQuantity(), item.getTopping(), item.getBottom()));
             }
         }
-        sumCartPrice();
+        cartPrice = sumCartPrice();
     }//addCartItemAmount
 
     //Formindsk antallet af et produkt i en varelinje
@@ -99,7 +98,7 @@ public class Cart {
                 }//if
             }//if
         }//for
-        sumCartPrice();
+        cartPrice = sumCartPrice();
     }//reduceCartItemAmount
 
     //Overfør userCart varelinjer til DB
