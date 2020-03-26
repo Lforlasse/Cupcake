@@ -1,5 +1,6 @@
 package DBAccess;
 
+import FunctionLayer.Cart;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 
@@ -66,6 +67,9 @@ public class UserMapper {
                 user.setPhone(phone);
                 user.setAddress(address);
                 user.setFullName(fullName);
+                if (user.getCart() == null){
+                    user.setCart(new Cart(userId));
+                }
                 return user;
             } else {
                 throw new LoginSampleException( "Could not validate user" );
