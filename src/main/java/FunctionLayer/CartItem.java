@@ -3,18 +3,12 @@ package FunctionLayer;
 import DBAccess.BottomMapper;
 import DBAccess.ToppingMapper;
 
-import java.util.List;
-
 public class CartItem {
 
     private String bottom, topping, itemId;
     private int quantity;
     private double price;
-    private static List<CartItem> cartItemList;
 
-    public static List<CartItem> getCartItemList() {
-        return cartItemList;
-    }
 
     public CartItem(int quantity, String topping, String bottom) {
         this.quantity = quantity;
