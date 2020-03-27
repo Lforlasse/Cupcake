@@ -17,42 +17,56 @@
     <div class="context">
 
         <div class="col table-responsive">
-            <table id="example" class="table table-striped table-bordered">
+            <table id="example" class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>Produkt nr.</th>
-                    <th>Produkt</th>
-                    <th>Pris</th>
-                    <th>Antal</th>
-                    <th>Total</th>
+                    <th scope="col">Produkt nr.</th>
+                    <th scope="col">Produkt</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Antal</th>
+                    <th scope="col">Total</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="element" items="${sessionScope.items}">
+                <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
                 <tr>
-                   <td>${element.toString()}</td>
+                    <th scope="row">Element.produktNR</th>
+                    <td>Element.produkt</td>
+                    <td>Element.pris</td>
+                    <td>
+                        <input type="button" value="-" class="minus">
+                        <!-- indsæt scope i value="" til antal -->
+                        <input type="tel" step="1" min="1" max="" name="quantity" value="Element.antal" title="Quantity" class="input-text qty text" size="4">
+                        <input type="button" value="+" class="plus">
+                    </td>
+                    <td>Element.total</td>
                 </tr>
-                </c:forEach>
+                <!-- AFSLUT FOR EACH -->
                 </tbody>
-
             </table>
-
+            <br><br>
+            <table id="example" class="table table-bordered">
+                <tr class="bg-light">
+                    <th scope="row">SUM</th>
+                    <td colspan="5">Element.cartSum (cartTotal)</td>
+                </tr>
+            </table>
         </div>
 
 
         <div class="col">
             <br>
-
-            <button type="button" style="float: right;" class="btn btn-primary" value="Button">Bekræft ordre</button>
-
-            <button type="button" style="float: left;" class="btn btn-primary" value="Button">Sortiment</button>
+            <button type="button" style="float: right;" class="btn btn-primary" value="Button">
+                Bekræft ordre
+            </button>
             <br>
             <br>
-
         </div>
-
     </div>
 </div>
 </div>
+<script>
+
+</script>
 <%@include file="../includes/footer.html" %>
 
