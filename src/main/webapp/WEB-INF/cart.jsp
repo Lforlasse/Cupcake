@@ -17,12 +17,12 @@
     <div class="context">
 
         <div class="col table-responsive">
-            <table id="example" class="table table-bordered">
+            <table id="scope" class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Produkt nr.</th>
-                    <th scope="col">Produkt</th>
-                    <th scope="col">Pris</th>
+                    <th scope="col">Produkt ID</th>
+                    <th scope="col">Topping</th>
+                    <th scope="col">Bottom</th>
                     <th scope="col">Antal</th>
                     <th scope="col">Total</th>
                 </tr>
@@ -30,9 +30,9 @@
                 <tbody>
                 <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
                 <tr>
-                    <th scope="row">Element.produktNR</th>
-                    <td>Element.produkt</td>
-                    <td>Element.pris</td>
+                    <th scope="row">produktIDkode</th>
+                    <td>ToppingKode</td>
+                    <td>BottomKode</td>
                     <td>
                         <input type="button" value="-" class="minus">
                         <!-- indsæt scope i value="" til antal -->
@@ -45,10 +45,10 @@
                 </tbody>
             </table>
             <br><br>
-            <table id="example" class="table table-bordered">
+            <table id="sum" class="table table-bordered">
                 <tr class="bg-light">
                     <th scope="row">SUM</th>
-                    <td colspan="5">Element.cartSum (cartTotal)</td>
+                    <td colspan="5">${sessionScope.cart.cartPrice}</td>
                 </tr>
             </table>
         </div>

@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <%@include file="../includes/footer.html" %>
+<%@include file="../includes/footer.html" %>
 
 
     <button type="button" class="btn btn-primary btn-block" value="Button">Produkt-oversigt

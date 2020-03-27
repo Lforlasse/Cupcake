@@ -15,7 +15,7 @@
     <h1>Velkommen</h1>
     <br>
     <div class="container-fluid text-center">
-        <button type="button" class="btn btn-primary" value="Button" href="...">Skab din egen cupcake!</button>
+        <button type="button" class="btn btn-primary" value="Button" href="...">Login og skab din egen Cupcake!</button>
     </div>
     <br>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
