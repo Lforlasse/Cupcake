@@ -23,7 +23,7 @@ public class Order {
     private static void createOrder(int userId, double cartPrice) {
 
         String query = "INSERT INTO orders (UserId,OrderPrice) " +
-                "VALUES (" + userId + ", " + cartPrice + ");";
+                "VALUES (\"" + userId + "\", " + cartPrice + ");";
         DBConnector.updateSQL(query);
 
     }//createOrder
@@ -33,7 +33,7 @@ public class Order {
 
         String query = "SELECT MAX(OrderId)" +
                 " FROM orders" +
-                " WHERE userId = " + userId + ";";
+                " WHERE userId = \"" + userId + "\";";
         ResultSet rs = DBConnector.querySQL(query);
 
         try {
@@ -54,7 +54,7 @@ public class Order {
         for (CartItem item : userCart) {
 
             query = "INSERT INTO orderContent (orderId,top,bottom,quantity) " +
-                    "VALUES (" + orderId + ", " + item.getTopping() + ", " + item.getBottom() + ", " + item.getQuantity() + ");";
+                    "VALUES (\"" + orderId + "\", \"" + item.getTopping() + "\", \"" + item.getBottom() + "\", " + item.getQuantity() + ");";
             DBConnector.updateSQL(query);
         }
 
@@ -64,7 +64,7 @@ public class Order {
 
         String query = "UPDATE users " +
                 "SET Credit = Credit + -" + cartPrice +
-                " WHERE UserId = " + userId + ";";
+                " WHERE UserId = \"" + userId + "\";";
         DBConnector.updateSQL(query);
     }//adjustUserCredit
 

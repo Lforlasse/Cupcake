@@ -4,7 +4,6 @@ import FunctionLayer.Cart;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 
-import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -116,7 +115,7 @@ public class UserMapper {
 
         String query =  "UPDATE users" +
                 "SET Credit = Credit + " + creditAdjust +
-                "WHERE UserId = " + userId + ";";
+                "WHERE UserId = \"" + userId + "\";";
         DBConnector.updateSQL(query);
     }//addUserBalance
 
@@ -125,7 +124,7 @@ public class UserMapper {
 
         String query =  "UPDATE users" +
                 "SET Credit = Credit + -" + creditAdjust +
-                "WHERE UserId = " + userId + ";";
+                "WHERE UserId = \"" + userId + "\";";
         DBConnector.updateSQL(query);
     }//subtractUserBalance
 
