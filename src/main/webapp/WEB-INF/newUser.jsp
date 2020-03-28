@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@include file="../includes/header.html" %>
+<%@include file="../includes/headerNewUser.html" %>
+
 <c:choose>
     <c:when test="${sessionScope.email != null}">
         <%@include file="../includes/nav.jsp" %>
@@ -17,7 +18,7 @@
     <br>
     <div class="context">
 
-<div class="new user form" link rel="stylesheet" href="../css/styleNewUser.css" >
+<div class="new user form" >
   <%-- new user form--%>
 
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -32,10 +33,14 @@
 
 
               <!-- Login Form -->
-              <form>
-                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="dit brugernavn">
-                  <input type="text" id="password" class="fadeIn third" name="login" placeholder="din adgangskode">
-                  <input type="text" id="password" class="fadeIn third" name="login" placeholder="din adgangskode igen">
+              <form class="form" role="form" name="register" action="FrontController" method="POST">
+                  <input type="hidden" name="target" value="register">
+                  <input type="text" id="email" class="fadeIn second" name="email" placeholder="din e-mail">
+                  <input type="text" id="password1" class="fadeIn third" name="password1" placeholder="din adgangskode">
+                  <input type="text" id="password2" class="fadeIn third" name="password2" placeholder="din adgangskode igen">
+                  <input type="text" id="fullName" class="fadeIn third" name="fullName" placeholder="dit navn">
+                  <input type="text" id="address" class="fadeIn third" name="address" placeholder="din adresse">
+                  <input type="text" id="phone" class="fadeIn third" name="phone" placeholder="tlf. nummer">
 
                <%--   <button type="button" style="float: center;" class="btn btn-primary" value="Button">Opret bruger</button>--%>
 
