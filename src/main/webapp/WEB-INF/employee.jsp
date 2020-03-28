@@ -8,7 +8,14 @@
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
-        <%@include file="../includes/nav.jsp" %>
+        <c:choose>
+            <c:when test="${sessionScope.role != 10}">
+                <%@include file="../includes/nav.jsp" %>
+            </c:when>
+            <c:otherwise>
+                <%@include file="../includes/adminNav.html" %>
+            </c:otherwise>
+        </c:choose>
     </c:when>
     <c:otherwise>
         <%@include file="../includes/loginNav.html" %>
