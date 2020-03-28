@@ -31,7 +31,8 @@ public class UserMapper {
                 + phone + "\", \""
                 + fullName + "\")";
         DBConnector.updateSQL(query);
-        login(email, password);
+       // login(email, password);
+
 
 
         /* LEGACY CODE
