@@ -8,7 +8,14 @@
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
-        <%@include file="../includes/nav.jsp" %>
+        <c:choose>
+            <c:when test="${sessionScope.role != 10}">
+                <%@include file="../includes/nav.jsp" %>
+            </c:when>
+            <c:otherwise>
+                <%@include file="../includes/adminNav.html" %>
+            </c:otherwise>
+        </c:choose>
     </c:when>
     <c:otherwise>
         <%@include file="../includes/loginNav.html" %>
@@ -18,29 +25,29 @@
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
     <%--Overskrift sættes ind her--%>
-    <h1>Employee page
+    <h1>Værktøj
         ${sessionScope.message}
     </h1>
     <br>
     <div class="context">
-        <div class="container-fluid">
+        <div class="container-fluid text-center">
             <div class="row">
                 <div class="col">
-                    <h3>TEST</h3>
+                    <a href="FrontController?target=redirect&page=orderTool" class="btn btn-primary btn-block" role="button" aria-pressed="true">
+                        Ordre-oversigt
+                    </a>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-primary btn-block" value="Button">
-                        Skift adgangskode
-                    </button>
+                    <a href="FrontController?target=redirect&page=orderTool" class="btn btn-primary btn-block" role="button" aria-pressed="true">
+                        Ordre-oversigt
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="FrontController?target=redirect&page=orderTool" class="btn btn-primary btn-block" role="button" aria-pressed="true">
+                        Ordre-oversigt
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 <%@include file="../includes/footer.html" %>
-
-
-    <button type="button" class="btn btn-primary btn-block" value="Button">Produkt-oversigt
-    </button>
-    <br>
-    <button type="button" class="btn btn-primary btn-block" value="Button">Administrer produkter
-    </button>
