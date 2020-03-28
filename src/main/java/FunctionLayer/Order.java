@@ -8,36 +8,36 @@ import java.util.List;
 
 public class Order {
 
-public static void newOrder (int userId, double cartPrice, List<CartItem> userCart){
+    public static void newOrder(int userId, double cartPrice, List<CartItem> userCart) {
 
-    createOrder(userId, cartPrice);
+        createOrder(userId, cartPrice);
 
-    int orderId = queryOrderNumber(userId);
+        int orderId = queryOrderNumber(userId);
 
-    createOrderContent(orderId, userCart);
+        createOrderContent(orderId, userCart);
 
-    adjustUserCredit(userId,cartPrice);
+        adjustUserCredit(userId, cartPrice);
 
-}//newOrder
+    }//newOrder
 
-    private static void createOrder(int userId, double cartPrice){
+    private static void createOrder(int userId, double cartPrice) {
 
-        String query =  "INSERT INTO orders (UserId,OrderPrice)" +
-                        "VALUES ("+userId+", "+cartPrice+");";
+        String query = "INSERT INTO orders (UserId,OrderPrice) " +
+                "VALUES (" + userId + ", " + cartPrice + ");";
         DBConnector.updateSQL(query);
 
     }//createOrder
 
-    private static int queryOrderNumber(int userId){
+    private static int queryOrderNumber(int userId) {
         int orderId = 0;
 
-        String query =  "SELECT MAX(OrderId)" +
-                        "FROM orders" +
-                        "WHERE userId ="+userId+";";
+        String query = "SELECT MAX(OrderId)" +
+                " FROM orders" +
+                " WHERE userId = " + userId + ";";
         ResultSet rs = DBConnector.querySQL(query);
 
         try {
-            while(rs.next()) {
+            while (rs.next()) {
                 orderId = rs.getInt("MAX(OrderId)");
             }
         } catch (SQLException e) {
@@ -47,24 +47,24 @@ public static void newOrder (int userId, double cartPrice, List<CartItem> userCa
         return orderId;
     }//queryOrderNumber
 
-    private static void createOrderContent(int orderId, List<CartItem> userCart){
+    private static void createOrderContent(int orderId, List<CartItem> userCart) {
 
-    String query;
+        String query;
 
-    for (CartItem item : userCart){
+        for (CartItem item : userCart) {
 
-        query =  "INSERT INTO orderContent (orderId,top,bottom,quantity)" +
-                 "VALUES ("+orderId+", "+item.getTopping()+", "+item.getBottom()+", "+item.getQuantity()+");";
-        DBConnector.updateSQL(query);
-    }
+            query = "INSERT INTO orderContent (orderId,top,bottom,quantity) " +
+                    "VALUES (" + orderId + ", " + item.getTopping() + ", " + item.getBottom() + ", " + item.getQuantity() + ");";
+            DBConnector.updateSQL(query);
+        }
 
     }//createOrderContent
 
-    private static void adjustUserCredit(int userId, double cartPrice){
+    private static void adjustUserCredit(int userId, double cartPrice) {
 
-        String query =  "UPDATE users" +
-                        "SET Credit = Credit + -" + cartPrice +
-                        "WHERE UserId = " + userId + ";";
+        String query = "UPDATE users " +
+                "SET Credit = Credit + -" + cartPrice +
+                " WHERE UserId = " + userId + ";";
         DBConnector.updateSQL(query);
     }//adjustUserCredit
 

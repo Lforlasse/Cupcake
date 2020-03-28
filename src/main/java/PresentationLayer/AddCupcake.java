@@ -28,12 +28,6 @@ public class AddCupcake extends Command {
         String bottom = request.getParameter("bottom");
         LogicFacade.addToCart((Cart)session.getAttribute("cart"), quantity, topping, bottom);
 
-        //session.setAttribute("getPopulatedCartItemList", LogicFacade.getAllBottoms());
-        List<String> hello = new ArrayList();
-        hello.add("1");
-        hello.add("1");
-
-       session.setAttribute("items", hello);
         return "assortment";
     }
 }

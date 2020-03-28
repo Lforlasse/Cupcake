@@ -5,6 +5,7 @@ import DBAccess.ToppingMapper;
 import DBAccess.UserMapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LogicFacade {
 
@@ -30,7 +31,18 @@ public class LogicFacade {
         cart.addCartItem(quantity, topping, bottom);
     }
 
-    public static ArrayList<Item> getCartItems(ArrayList<Item> itemList) {
-        return itemList;
+    public static <cartItem> void removeFromCart(Cart cart, cartItem cartItem) {
     }
+
+    public static void createOrder(Cart cart) {
+        int userId = cart.getUserId();
+        double cartPrice = cart.getCartPrice();
+        List<CartItem> userCart = cart.getUserCart();
+        Order.newOrder(userId, cartPrice, userCart);
+    }
+
+    public static Order getLatestOrder(User user) {
+        return null;
+    }
+
 }

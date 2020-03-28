@@ -16,7 +16,7 @@
     <br>
     <div class="context">
 
-        <div class="col table-responsive">
+        <div class="col table-responsive" style="padding: 0;">
             <table id="scope" class="table table-bordered">
                 <thead>
                 <tr>
@@ -29,22 +29,28 @@
                 </thead>
                 <tbody>
                 <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
-                <tr>
-                    <th scope="row">produktIDkode</th>
-                    <td>ToppingKode</td>
-                    <td>BottomKode</td>
-                    <td>
-                        <input type="button" value="-" class="minus">
-                        <!-- indsæt scope i value="" til antal -->
-                        <input type="tel" step="1" min="1" max="" name="quantity" value="Element.antal" title="Quantity" class="input-text qty text" size="4">
-                        <input type="button" value="+" class="plus">
-                    </td>
-                    <td>Element.total</td>
-                </tr>
+                <c:forEach var="cartItem" items="${sessionScope.cartItemList}">
+                    <tr>
+                        <th scope="row">${cartItem.itemId}</th>
+                        <td>${cartItem.topping}</td>
+                        <td>${cartItem.bottom}</td>
+                        <td>
+                            <form role="form" action="FrontController" name="removeCupcake" method="POST">
+                                <input type="hidden" name="target" value="removeCupcake">
+                                    ${cartItem.quantity}
+                                <input type="hidden" name="itemId" value="${cartItem.itemId}">
+                                <button type="submit" style="color: dodgerblue; float: right; background-color: #ffffff"
+                                        value="submit">Fjern
+                                </button>
+                            </form>
+                        </td>
+                        <td>${cartItem.price}</td>
+                    </tr>
+                </c:forEach>
                 <!-- AFSLUT FOR EACH -->
                 </tbody>
             </table>
-            <br><br>
+            <br>
             <table id="sum" class="table table-bordered">
                 <tr class="bg-light">
                     <th scope="row">SUM</th>
@@ -52,21 +58,13 @@
                 </tr>
             </table>
         </div>
-
-
-        <div class="col">
-            <br>
-            <button type="button" style="float: right;" class="btn btn-primary" value="Button">
+        <form role="form" action="FrontController" name="createOrder" method="POST">
+            <input type="hidden" name="target" value="createOrder">
+            <button type="submit" style="" class="btn btn-primary mr-0 ml-auto d-block" value="submit">
                 Bekræft ordre
             </button>
-            <br>
-            <br>
-        </div>
+        </form>
     </div>
 </div>
-</div>
-<script>
-
-</script>
 <%@include file="../includes/footer.html" %>
 

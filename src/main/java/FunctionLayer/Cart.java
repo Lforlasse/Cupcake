@@ -51,7 +51,7 @@ public class Cart {
    }//addCartItem
 
     //Fjern en varelinje fra userCart
-    private void removeCartItem(String itemId) {
+    public void removeCartItem(String itemId) {
         int listCounter = -1;
         int listSpot;
 
