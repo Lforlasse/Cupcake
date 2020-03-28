@@ -19,11 +19,21 @@ public class UserMapper {
         String email = user.getEmail();
         String password = user.getPassword();
         String role = user.getRole();
-        String query = "INSERT INTO users (Email, UserPassword, RoleId) " + "VALUES (\""
+        String address = user.getAddress();
+        String phone = user.getPhone();
+        String fullName = user.getFullName();
+
+        String query = "INSERT INTO users (Email, UserPassword, RoleId, Address, Phone, FullName) " + "VALUES (\""
                 + email + "\", \""
                 + password + "\", \""
-                + role + "\")";
+                + role + "\", \""
+                + address + "\", \""
+                + phone + "\", \""
+                + fullName + "\")";
         DBConnector.updateSQL(query);
+       // login(email, password);
+
+
 
         /* LEGACY CODE
         try {
@@ -47,7 +57,7 @@ public class UserMapper {
     }
 
     public static User login( String email, String password ) throws LoginSampleException {
-        String query = "SELECT UserId, RoleId, Credit, Fullname, Phone, Address FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
+        String query = "SELECT UserId, RoleId, Credit, FullName, Phone, Address FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
         ResultSet rs = DBConnector.querySQL(query);
 
         try {

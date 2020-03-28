@@ -16,7 +16,7 @@ public class User {
     private String password; // Should be hashed and secured
     private String role;
     private double balance = 0;
-    private Cart cart; //Oprettes først når det bliver nødvændigt.
+    private Cart cart; //Oprettes først når det bliver nødvendigt.
     private String phone;
     private String address;
     private String fullName;
@@ -25,6 +25,16 @@ public class User {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+// User creation constructor
+    public User(String email, String password, String role,String phone, String address, String fullName) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.address = address;
+        this.phone = phone;
+        this.fullName = fullName;
     }
 
     //TODO Metodekald på kundens CreditSaldo
