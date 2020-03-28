@@ -13,6 +13,7 @@ public class CreateOrder extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         HttpSession session = request.getSession();
         LogicFacade.createOrder((Cart)session.getAttribute("cart"));
+        //session.setAttribute("order", LogicFacade.getLatestOrder());
         return "order";
     }
 }

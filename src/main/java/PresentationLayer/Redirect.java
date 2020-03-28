@@ -5,13 +5,13 @@ import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 public class Redirect extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         String page = request.getParameter("page");
+        HttpSession session = request.getSession();
 
         if ("assortment".equals(page)) {
             if (request.getServletContext().getAttribute("toppingList") == null) {
@@ -20,12 +20,15 @@ public class Redirect extends Command {
             if (request.getServletContext().getAttribute("bottomList") == null) {
                 request.getServletContext().setAttribute("bottomList", LogicFacade.getAllBottoms());
             }
-        } else if ("cart".equals(page)) {
-            List<String> myList = new ArrayList();
-            myList.add("Hello");
-            myList.add("Hello");
-            request.getSession().setAttribute("myList", myList);
         }
+
+        String role = (String)session.getAttribute("role");
+        if ("customer".equals(page)) {
+            if (role.equals("10")) {
+                page = "employee";
+            }
+        }
+
         return page;
     }
 }

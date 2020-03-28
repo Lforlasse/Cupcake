@@ -44,8 +44,8 @@ public class OrderMapper {
         String order, orderDate, orderStatus;
         int orderId, userId;
 
-        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders" +
-                "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId;" +
+        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders " +
+                "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId " +
                 "WHERE orders.StatusId = " + StatusId + ";";
         ResultSet rs = DBConnector.querySQL(query);
 
@@ -72,8 +72,8 @@ public class OrderMapper {
         String order, orderDate, orderStatus;
         int orderId;
 
-        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders" +
-                "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId" +
+        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders " +
+                "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId " +
                 "WHERE UserId = " + userId + ";";
         ResultSet rs = DBConnector.querySQL(query);
 
@@ -99,8 +99,8 @@ public class OrderMapper {
         String order, orderDate, orderStatus;
         int orderId;
 
-        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders" +
-                "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId" +
+        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders " +
+                "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId " +
                 "WHERE UserId = " + UserId + " AND orders.StatusId = " + StatusId + ";";
         ResultSet rs = DBConnector.querySQL(query);
 
@@ -129,9 +129,9 @@ public class OrderMapper {
         double priceTop, priceBottom;
         double priceTotal = 0;
 
-        String query =  "SELECT Top,Bottom,Quantity,top.Price,bottom.Price from ordercontent" +
-                "INNER JOIN top on ordercontent.Top=top.TopType" +
-                "INNER JOIN bottom on ordercontent.Bottom=bottom.BottomType" +
+        String query =  "SELECT Top,Bottom,Quantity,top.Price,bottom.Price from ordercontent " +
+                "INNER JOIN top on ordercontent.Top=top.TopType " +
+                "INNER JOIN bottom on ordercontent.Bottom=bottom.BottomType " +
                 "WHERE OrderId ="+orderId+";";
         ResultSet rs = DBConnector.querySQL(query);
 
