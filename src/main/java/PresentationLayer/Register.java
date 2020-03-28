@@ -14,19 +14,32 @@ public class Register extends Command {
         String email = request.getParameter( "email" );
         String password1 = request.getParameter( "password1" );
         String password2 = request.getParameter( "password2" );
+        String address = request.getParameter( "address" );
+        String phone = request.getParameter( "phone" );
+        String fullName = request.getParameter( "fullName" );
+
        if ( password1.equals( password2 ) ) {
-            User user = LogicFacade.createUser( email, password1 );
+            User user = LogicFacade.createUser(email, password1, address, phone, fullName);
             HttpSession session = request.getSession();
 
-            session.setAttribute("email",email);
-            session.setAttribute( "user", user );
-            session.setAttribute( "role", user.getRole() );
+           session.setAttribute("user", user);
+           session.setAttribute("role", user.getRole());
+           session.setAttribute("email", email);
+           session.setAttribute("name", user.getFullName());
+           session.setAttribute("phone", user.getPhone());
+           session.setAttribute("address", user.getAddress());
+           session.setAttribute("userId", user.getUserId());
+           session.setAttribute("balance", user.getBalance());
+           session.setAttribute("cart", user.getCart());
+           session.setAttribute("cartItemList", user.getCart().getUserCart());
+
+
 
            switch (user.getRole()) {
                case "20":
-                   return "customerpage";
+                   return "customer";
                case "10":
-                   return "emoployeepage";
+                   return "emoployee";
                default:
                    return "index";
            }
@@ -34,5 +47,10 @@ public class Register extends Command {
             throw new LoginSampleException( "the two passwords did not match" );
         }
     }
+
+
+
+
+
 
 }
