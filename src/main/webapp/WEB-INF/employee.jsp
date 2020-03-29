@@ -43,7 +43,6 @@
                         <br>
                     </p>
                     <h3>Administration</h3>
-                    <h5>Ordrer</h5>
                     <p>
                     <form role="form" action="FrontController" name="orderTool" method="POST">
                         <input type="hidden" name="target" value="orderTool">
@@ -51,16 +50,15 @@
                             Ordre-oversigt
                         </button>
                     </form>
+                    <br>
+                    <form role="form" action="FrontController" name="customerCreditTool" method="POST">
+                        <input type="hidden" name="target" value="customerCreditTool">
+                        <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
+                            Kunde Kredit
+                        </button>
+                    </form>
                     </p>
                     <br>
-                    <h5>Produkter</h5>
-                    <p>
-                        <button type="button" class="btn btn-primary btn-block" value="Button">Produkt-oversigt
-                        </button>
-                        <br>
-                        <button type="button" class="btn btn-primary btn-block" value="Button">Administrer produkter
-                        </button>
-                    </p>
                 </div>
                 <div class="col">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">

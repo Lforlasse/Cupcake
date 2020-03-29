@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
+import DBAccess.UserMapper;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,14 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class OrderTool extends Command {
+public class EditCredit extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
         HttpSession session = request.getSession();
-        session.setAttribute("orderList", OrderMapper.seeAllOrders());
 
+        double editCredit = Double.parseDouble(request.getParameter("editCredit"));
+        int userId = Integer.parseInt(request.getParameter("userId"));
 
-        return "orderTool";
+        UserMapper.addUserBalance(userId, editCredit);
+        session.setAttribute("userList", UserMapper.seeAllUsers());
+
+        return "customerCreditTool";
     }
 }
