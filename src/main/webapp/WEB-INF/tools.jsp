@@ -39,6 +39,13 @@
                             Ordre-oversigt
                         </button>
                     </form>
+                    <br>
+                    <form role="form" action="FrontController" name="customerCreditTool" method="POST">
+                        <input type="hidden" name="target" value="customerCreditTool">
+                        <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
+                            Kunde Kredit
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -10,7 +10,6 @@ import java.util.List;
 
 public class RemoveOrder extends Command {
 
-
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
@@ -18,7 +17,7 @@ public class RemoveOrder extends Command {
 
         String orderId = request.getParameter("orderId");
         OrderMapper.deleteOrder(orderId);
-        session.setAttribute("orderList", (List) OrderMapper.seeAllOrders());
+        session.setAttribute("orderList", OrderMapper.seeAllOrders());
 
         return "orderTool";
     }
