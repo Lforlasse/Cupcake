@@ -19,34 +19,36 @@
 <!-- INDHOLDS DIV -->
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
-    <h1>Ordre-oversigt</h1>
+    <h1>Kunde Kredit</h1>
     <br>
     <div class="context">
         <div class="col table-responsive" style="padding: 0;">
             <table id="scope" class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Ordre ID</th>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Ordre Dato</th>
-                    <th scope="col">Ordre Status</th>
+                    <th scope="col">Kunde ID</th>
+                    <th scope="col">Kunde Email</th>
+                    <th scope="col">Kredit</th>
+                    <th scope="col">Rediger Kredit</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
-                <c:forEach var="orderList" items="${sessionScope.orderList}">
+                <c:forEach var="userList" items="${sessionScope.userList}">
                     <tr>
-                        <th scope="row">${orderList.get("orderId")}</th>
-                        <td>${orderList.get("userId")}</td>
-                        <td>${orderList.get("orderDate")}</td>
-                        <td>${orderList.get("orderStatus")}</td>
+                        <th scope="row">${userList.get("userId")}</th>
+                        <td>${userList.get("userEmail")}</td>
+                        <td>${userList.get("credit")}</td>
                         <td>
-                            <form role="form" action="FrontController" name="removeOrder" method="POST">
-                                <input type="hidden" name="orderId" value="${orderList.get("orderId")}">
-                                <input type="hidden" name="target" value="removeOrder">
+                            <form role="form" action="FrontController" name="target" method="POST">
+                            <input type="number" id="editCredit" class="" name="editCredit" placeholder="Indtast">
+                            <input type="hidden" value ="${userList.get("userId")}" name="userId">
+                        </td>
+                        <td>
+                                <input type="hidden" name="target" value="editCredit">
 
-                                <button type="submit" style="color: dodgerblue; background-color: #ffffff"
-                                        value="submit">Fjern
+                                <button type="submit" style="color: dodgerblue; background-color: #ffffff" value="submit">
+                                    Bekræft
                                 </button>
                             </form>
                         </td>
