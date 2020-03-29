@@ -114,40 +114,49 @@
             </div>
         </div>
     </div>
-
+<!-- INDHOLDS DIV -->
     <div class="jumbotron text-center" style="padding: 2px!important;">
         <br>
         <h1>Ordre-oversigt</h1>
         <br>
         <div class="context">
+            <div class="context-item">
+            <form action="FrontController" name="" method="POST">
+                <input required type="text" class="form-control" name="userId" placeholder="User ID">
+                <input type="hidden" name="target" value="customerOrders">
+                <button id="button" type="submit" class="btn btn-primary mx-auto d-block" style="width: 100%; margin-top: 10px;" value="submit"> 
+                    Søg
+                </button>
+            </form>
+        </div>
+
             <div class="col table-responsive" style="padding: 0;">
                 <table id="scope" class="table table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">Ordre ID</th>
-                        <th scope="col">User ID</th>
                         <th scope="col">Ordre Dato</th>
                         <th scope="col">Ordre Status</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
+
+                    
                     <c:forEach var="orderList" items="${sessionScope.orderList}">
                         <tr>
                             <th scope="row">${orderList.get("orderId")}</th>
-                            <td>${orderList.get("userId")}</td>
                             <td>${orderList.get("orderDate")}</td>
-                            <td>${orderList.get("orderStatus")}</td>
-                            <td>
-                                <form role="form" action="FrontController" name="removeOrder" method="POST">
-                                    <input type="hidden" name="orderId" value="${orderList.get("orderId")}">
-                                    <input type="hidden" name="target" value="removeOrder">
-    
-                                    <button type="submit" style="color: dodgerblue; background-color: #ffffff"
-                                            value="submit">Fjern
-                                    </button>
-                                </form>
-                            </td>
+                            <td><select class="form-control">
+                                <option>${orderList.get("orderStatus")}</option>
+                                <option>${orderList.get("orderStatus")}</option>
+                                <option>${orderList.get("orderStatus")}</option>
+                                <option selected>Test</option>
+                                <option>${orderList.get("orderStatus")}</option>
+
+                            </select>
+                                
+                                </td>
                         </tr>
                     </c:forEach>
                     <!-- AFSLUT FOR EACH -->
@@ -156,9 +165,9 @@
                 <br>
                 <form role="form" action="FrontController" name="redirect" method="POST">
                     <input type="hidden" name="target" value="redirect">
-                    <input type="hidden" name="page" value="tools">
-                    <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
-                        Værktøj
+                    <input type="hidden" name="page" value="employee"> 
+                    <button type="submit" style="background-color: #e9ecef; color: #212529; border-color: #e9ecef;" class="btn btn-primary d-block mr-auto ml-0" value="submit">
+                        Tilbage
                     </button>
                 </form>
             </div>

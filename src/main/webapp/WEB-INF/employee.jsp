@@ -43,21 +43,24 @@
                         <br>
                     </p>
                     <h3>Administration</h3>
-                    <p>
-                    <form role="form" action="FrontController" name="orderTool" method="POST">
+                    <form role="form" action="FrontController" name="orderTool" method="POST" style="margin-top: 10px">
                         <input type="hidden" name="target" value="orderTool">
                         <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
                             Ordre-oversigt
                         </button>
                     </form>
-                    <br>
-                    <form role="form" action="FrontController" name="customerCreditTool" method="POST">
-                        <input type="hidden" name="target" value="customerCreditTool">
+                    <form role="form" action="FrontController" name="customerOrderTool" method="POST" style="margin-top: 10px">
+                        <input type="hidden" name="target" value="customerOrderTool">
                         <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
+                            Kunde ordrer-oversigt
+                        </button>
+                    </form>
+                    <form role="form" action="FrontController" name="customerCreditTool" method="POST" style="margin-top: 10px">
+                        <input type="hidden" name="target" value="customerCreditTool">
+                        <button type="submit" style="" class="btn btn-primary mx-auto d-block w-100" value="submit">
                             Kunde Kredit
                         </button>
                     </form>
-                    </p>
                     <br>
                 </div>
                 <div class="col">

@@ -46,6 +46,29 @@ public class OrderMapper {
         return allOrdersList;
     }//seeAllOrders
 
+    //Get a list of status items in DB
+    public static List<Map> getStatusList(){
+        List<Map> statusList = new ArrayList<>();
+        String statusId, orderStatus;
+
+        String query = "SELECT * FROM cupcake.orderstatus;";
+        ResultSet rs = DBConnector.querySQL(query);
+
+        try {
+            while(rs.next()) {
+                //statusId = rs.getString("StatusId");
+                orderStatus = rs.getString("OrderStatus");
+                Map<String, String> map = new HashMap<>();
+                map.put("orderStatus", orderStatus);
+                statusList.add(map);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return statusList;
+    }//getStatusList
+
+
     //Vis alle ordrer ud fra ordrestatus
     public static List SeeAllOrdersOnStatus(int StatusId){
 
