@@ -1,5 +1,7 @@
 package DBAccess;
 
+import netscape.security.UserDialogHelper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,13 +12,13 @@ import java.util.Map;
 public class OrderMapper {
 
     //Vis alle ordrer
-    public static List seeAllOrders(){
+    public static ArrayList<HashMap<String, String>> seeAllOrders(){
 
-        List<String> allOrdersList = new ArrayList<>();
+        ArrayList<HashMap<String, String>> allOrdersList = new ArrayList<>();
         String order, orderDate, orderStatus;
         int orderId, userId;
 
-        String query =  "SELECT OrderId, OrderDate,orderstatus.OrderStatus from orders" +
+        String query =  "SELECT OrderId, UserId, OrderDate,orderstatus.OrderStatus from orders " +
                 "INNER JOIN orderstatus on orders.StatusId=orderstatus.StatusId;";
         ResultSet rs = DBConnector.querySQL(query);
 
@@ -27,8 +29,15 @@ public class OrderMapper {
                 orderDate = rs.getString("OrderDate");
                 orderStatus = rs.getString("orderstatus.OrderStatus");
 
-                order = "Usernumber:\t"+userId+".\nOrdernumber:\t"+orderId+".\nOrderstatus:\t"+orderStatus+".\nDate:\t"+orderDate+".";
-                allOrdersList.add(order);
+                HashMap<String, String> orderHashMap = new HashMap<>();
+
+                orderHashMap.put("orderId", String.valueOf(orderId));
+                orderHashMap.put("userId", String.valueOf(userId));
+                orderHashMap.put("orderDate", String.valueOf(orderDate));
+                orderHashMap.put("orderStatus", String.valueOf(orderStatus));
+
+                //order = "Usernumber:\t"+userId+".\nOrdernumber:\t"+orderId+".\nOrderstatus:\t"+orderStatus+".\nDate:\t"+orderDate+".";
+                allOrdersList.add(orderHashMap);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -182,12 +191,12 @@ public class OrderMapper {
     }//cancelOrderAdmin
 
     //Slet ordre i databasen
-    public static void deleteOrder(int orderId){
+    public static void deleteOrder(String orderId){
 
-        String query1 = "DELETE FROM ordercontent" +
-                "WHERE orderId = " + orderId +";";
-        String query2 = "DELETE FROM orders" +
-                "WHERE orderId =" + orderId + ";";
+        String query1 = "DELETE FROM ordercontent " +
+                "WHERE orderId = " + orderId + ";";
+        String query2 = "DELETE FROM orders " +
+                "WHERE orderId = " + orderId + ";";
         DBConnector.updateSQL(query1);
         DBConnector.updateSQL(query2);
 
