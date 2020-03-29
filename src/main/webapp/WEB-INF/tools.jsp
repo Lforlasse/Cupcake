@@ -33,21 +33,13 @@
         <div class="container-fluid text-center">
             <div class="row">
                 <div class="col">
-                    <a href="FrontController?target=redirect&page=orderTool" class="btn btn-primary btn-block" role="button" aria-pressed="true">
-                        Ordre-oversigt
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="FrontController?target=redirect&page=orderTool" class="btn btn-primary btn-block" role="button" aria-pressed="true">
-                        Ordre-oversigt
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="FrontController?target=redirect&page=orderTool" class="btn btn-primary btn-block" role="button" aria-pressed="true">
-                        Ordre-oversigt
-                    </a>
+                    <form role="form" action="FrontController" name="orderTool" method="POST">
+                        <input type="hidden" name="target" value="orderTool">
+                        <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
+                            Ordre-oversigt
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 <%@include file="../includes/footer.html" %>

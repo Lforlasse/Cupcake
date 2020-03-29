@@ -34,22 +34,22 @@
                 </thead>
                 <tbody>
                 <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
-                <c:forEach var="seeAllOrders" items="${OrderMapper.seeAllOrders}">
+                <c:forEach var="orderList" items="${sessionScope.orderList}">
                     <tr>
-                        <th scope="row">${OrderMapper.orderId}</th>
-                        <td>${cartItem.topping}</td>
-                        <td>${cartItem.bottom}</td>
+                        <th scope="row">${orderList.get("orderId")}</th>
+                        <td>${orderList.get("userId")}</td>
+                        <td>${orderList.get("orderDate")}</td>
+                        <td>${orderList.get("orderStatus")}</td>
                         <td>
-                            <form role="form" action="FrontController" name="removeCupcake" method="POST">
-                                <input type="hidden" name="target" value="removeCupcake">
-                                    ${cartItem.quantity}
-                                <input type="hidden" name="itemId" value="${cartItem.itemId}">
-                                <button type="submit" style="color: dodgerblue; float: right; background-color: #ffffff"
+                            <form role="form" action="FrontController" name="removeOrder" method="POST">
+                                <input type="hidden" name="orderId" value="${orderList.get("orderId")}">
+                                <input type="hidden" name="target" value="removeOrder">
+
+                                <button type="submit" style="color: dodgerblue; background-color: #ffffff"
                                         value="submit">Fjern
                                 </button>
                             </form>
                         </td>
-                        <td>${cartItem.price}</td>
                     </tr>
                 </c:forEach>
                 <!-- AFSLUT FOR EACH -->
@@ -58,7 +58,7 @@
             <br>
             <a href="FrontController?target=redirect&page=tools" class="btn btn-primary mr-auto" role="button"
                aria-pressed="true">
-                Tilbage
+                Værktøj
             </a>
         </div>
     </div>
