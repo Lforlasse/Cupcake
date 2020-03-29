@@ -21,7 +21,7 @@
     <br>
     <%--Overskrift sættes ind her--%>
     <h1>
-        Sortiment page
+        Sortiment
     </h1>
     <br>
     <div class="context">

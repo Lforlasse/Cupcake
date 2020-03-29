@@ -1,11 +1,13 @@
 package FunctionLayer;
 
 import DBAccess.BottomMapper;
+import DBAccess.OrderMapper;
 import DBAccess.ToppingMapper;
 import DBAccess.UserMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LogicFacade {
 
@@ -31,8 +33,6 @@ public class LogicFacade {
         cart.addCartItem(quantity, topping, bottom);
     }
 
-    public static <cartItem> void removeFromCart(Cart cart, cartItem cartItem) {
-    }
 
     public static void createOrder(Cart cart) {
         int userId = cart.getUserId();
@@ -41,8 +41,8 @@ public class LogicFacade {
         Order.newOrder(userId, cartPrice, userCart);
     }
 
-    public static Order getLatestOrder(User user) {
-        return null;
+    public static List<Map> getLatestOrder(int orderId) {
+        return OrderMapper.getOrderContentList(orderId);
     }
 
 }

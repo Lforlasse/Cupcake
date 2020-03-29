@@ -117,6 +117,8 @@ VALUES ((SELECT UserId FROM Users WHERE Email = "Alice@Cooper.com"),177);
 INSERT INTO Orders (UserId,OrderPrice)
 VALUES ((SELECT UserId FROM Users WHERE Email = "Frank@Zappa.com"),74);
 
+UPDATE orders SET StatusId = '20' WHERE OrderId= 2500;
+
 CREATE TABLE OrderContent (
 	OrderId int,
     Top varchar(15),

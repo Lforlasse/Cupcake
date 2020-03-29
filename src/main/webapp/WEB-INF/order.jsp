@@ -19,7 +19,7 @@
 <!-- INDHOLDS DIV -->
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
-    <h1>Indkøbskurv</h1>
+    <h1>Ordre: #${sessionScope.orderId}</h1>
     <br>
     <div class="context">
 
@@ -28,7 +28,8 @@
                 <thead>
                 <tr>
                     <th scope="col">Produkt nr.</th>
-                    <th scope="col">Produkt</th>
+                    <th scope="col">Topping</th>
+                    <th scope="col">Bund</th>
                     <th scope="col">Pris</th>
                     <th scope="col">Antal</th>
                     <th scope="col">Total</th>
@@ -36,43 +37,42 @@
                 </thead>
                 <tbody>
                 <!-- INDSÆT FOR EACH KODEN MED ELEMENTER -->
-                <tr>
-                    <th scope="row">Element.produktNR</th>
-                    <td>Element.produkt</td>
-                    <td>Element.pris</td>
-                    <td>Element.antal</td>
-                    <td>Element.</td>
-                </tr>
+                <c:forEach var="orderLine" items="${sessionScope.order}">
+                    <tr>
+                        <th scope="row">${orderLine.get("productId")}</th>
+                        <td>${orderLine.get("topping")}</td>
+                        <td>${orderLine.get("bottom")}</td>
+                        <td>${orderLine.get("priceSingle")}</td>
+                        <td>${orderLine.get("quantity")}</td>
+                        <td>${orderLine.get("priceTotal")}</td>
+                    </tr>
+                </c:forEach>
                 <!-- AFSLUT FOR EACH -->
                 </tbody>
             </table>
-            <br>
-            <table id="example" class="table table-bordered">
-                <tr>
-                    <th scope="row">KREDIT</th>
-                    <td>Element.userKredit</td>
-                </tr>
-            </table>
-            <br><br>
-            <table id="example" class="table table-bordered">
+            <table id="sum" class="table table-bordered" style="margin-top: 10px">
                 <tr class="bg-light">
                     <th scope="row">SUM</th>
-                    <td colspan="5">Element.cartSum (cartTotal-kredit)</td>
+                    <c:set var="order" value="${sessionScope.order}"/>
+                    <c:set var="lastLine" value="${order.get(order.size()-1)}"/>
+                    <td colspan="5">${lastLine.get("priceSum")}</td>
+                </tr>
+            </table>
+            <table id="kredit" class="table table-bordered" style="margin-top: 10px">
+                <tr>
+                    <th scope="row">KREDIT</th>
+                    <td>${sessionScope.balance}</td>
                 </tr>
             </table>
         </div>
-
-
-        <div class="col">
-            <br>
-            <button type="button" style="float: right;" class="btn btn-primary" value="Button">
-                Bekræft ordre
+        <form role="form" action="FrontController" name="redirect" method="POST">
+            <input type="hidden" name="target" value="redirect">
+            <input type="hidden" name="page" value="customer">
+            <button type="submit" class="btn btn-primary d-block mr-auto ml-0 grey-btn" value="submit">
+                Tilbage
             </button>
-            <br>
-            <br>
-        </div>
+        </form>
     </div>
-</div>
 </div>
 <%@include file="../includes/footer.html" %>
 

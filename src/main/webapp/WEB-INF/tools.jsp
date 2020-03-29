@@ -5,6 +5,11 @@
         <c:redirect url="FrontController?target=redirect&page=index"></c:redirect>
     </c:when>
 </c:choose>
+<c:choose>
+    <c:when test="${sessionScope.role != '10'}">
+        <c:redirect url="FrontController?target=redirect&page=index"></c:redirect>
+    </c:when>
+</c:choose>
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
@@ -25,9 +30,7 @@
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
     <%--Overskrift sættes ind her--%>
-    <h1>Værktøj
-        ${sessionScope.message}
-    </h1>
+    <h1>Værktøj</h1>
     <br>
     <div class="context">
         <div class="container-fluid text-center">
@@ -46,7 +49,15 @@
                             Kunde Kredit
                         </button>
                     </form>
+                    <form role="form" action="FrontController" name="redirect" method="POST">
+                        <input type="hidden" name="target" value="redirect">
+                        <input type="hidden" name="page" value="employee">
+                        <button type="submit" class="btn btn-primary d-block mr-auto ml-0 grey-btn" value="submit">
+                            Tilbage
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 <%@include file="../includes/footer.html" %>

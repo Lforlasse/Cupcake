@@ -25,40 +25,38 @@
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
     <%--Overskrift sættes ind her--%>
-    <h1>Employee page
-        ${sessionScope.message}
-    </h1>
+    <h1>${sessionScope.name}</h1>
     <br>
     <div class="context">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col">
                     <h3>Mine ordrer</h3>
-                    <p>
-                        <button type="button" class="btn btn-primary mx-auto d-block" value="Button">Se aktive ordrer
-                        </button>
-                        <br>
-                        <button type="button" class="btn btn-primary mx-auto d-block" value="Button">Se udførte ordrer
-                        </button>
-                        <br>
-                    </p>
+                    <button type="button" class="btn btn-primary mx-auto d-block w-100" value="Button">Se aktive ordrer
+                    </button>
+                    <button type="button" class="btn btn-primary mx-auto d-block w-100" value="Button"
+                            style="margin-top: 10px">Se udførte ordrer
+                    </button>
+                    <br>
                     <h3>Administration</h3>
                     <form role="form" action="FrontController" name="orderTool" method="POST" style="margin-top: 10px">
                         <input type="hidden" name="target" value="orderTool">
-                        <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
-                            Ordre-oversigt
+                        <button type="submit" style="" class="btn btn-primary mx-auto d-block w-100" value="submit">
+                            Ordreoversigt
                         </button>
                     </form>
-                    <form role="form" action="FrontController" name="customerOrderTool" method="POST" style="margin-top: 10px">
-                        <input type="hidden" name="target" value="customerOrderTool">
-                        <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
-                            Kunde ordrer-oversigt
+                    <form role="form" action="FrontController" name="redirect" method="POST" style="margin-top: 10px">
+                        <input type="hidden" name="target" value="redirect">
+                        <input type="hidden" name="page" value="customerorderlookuptool">
+                        <button type="submit" style="" class="btn btn-primary mx-auto d-block w-100" value="submit">
+                            Kundeordreoversigt
                         </button>
                     </form>
-                    <form role="form" action="FrontController" name="customerCreditTool" method="POST" style="margin-top: 10px">
+                    <form role="form" action="FrontController" name="customerCreditTool" method="POST"
+                          style="margin-top: 10px">
                         <input type="hidden" name="target" value="customerCreditTool">
                         <button type="submit" style="" class="btn btn-primary mx-auto d-block w-100" value="submit">
-                            Kunde Kredit
+                            Kunde kredit
                         </button>
                     </form>
                     <br>

@@ -99,3 +99,9 @@
     background-color: transparent;
     border: 1px solid #efefef;
 }
+
+.grey-btn {
+    background-color: #e9ecef!important;
+    color: #212529!important;
+    border-color: #e9ecef!important;
+}

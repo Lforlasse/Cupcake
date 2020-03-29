@@ -20,12 +20,12 @@
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
     <%--Overskrift sættes ind her--%>
-    <h1>Contact page
+    <h1>Contact
     </h1>
     <br>
     <div class="context">
         <%--Indhold sættes ind her--%>
-        Indhold her
+        Snydt.
     </div>
 </div>
 <%@include file="../includes/footer.html" %>

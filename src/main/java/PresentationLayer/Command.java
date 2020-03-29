@@ -23,6 +23,8 @@ abstract class Command {
         commands.put("removeOrder", new RemoveOrder());
         commands.put("customerCreditTool", new CustomerCreditTool());
         commands.put("customerOrderTool", new CustomerOrderTool());
+        commands.put("customerOrderLookup", new CustomerOrderLookup());
+        commands.put("customerOrderUpdate", new CustomerOrderUpdate());
         commands.put("editCredit", new EditCredit());
     }
 

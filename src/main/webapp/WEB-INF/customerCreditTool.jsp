@@ -1,5 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<c:choose>
+    <c:when test="${sessionScope.role != '10'}">
+        <c:redirect url="FrontController?target=redirect&page=index"></c:redirect>
+    </c:when>
+</c:choose>
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
@@ -41,15 +46,12 @@
                         <td>${userList.get("credit")}</td>
                         <td>
                             <form role="form" action="FrontController" name="target" method="POST">
-                            <input type="number" id="editCredit" class="" name="editCredit" placeholder="Indtast">
-                            <input type="hidden" value ="${userList.get("userId")}" name="userId">
-                        </td>
-                        <td>
-                                <input type="hidden" name="target" value="editCredit">
-
-                                <button type="submit" style="color: dodgerblue; background-color: #ffffff" value="submit">
-                                    Bekræft
-                                </button>
+                                <input type="number" id="editCredit" class="form-control" name="editCredit" placeholder="Beløb">
+                                <input type="hidden" value="${userList.get("userId")}" name="userId">
+                            <input type="hidden" name="target" value="editCredit">
+                            <button type="submit" style="color: dodgerblue; background-color: #ffffff" value="submit">
+                                Bekræft
+                            </button>
                             </form>
                         </td>
                     </tr>
@@ -57,12 +59,11 @@
                 <!-- AFSLUT FOR EACH -->
                 </tbody>
             </table>
-            <br>
             <form role="form" action="FrontController" name="redirect" method="POST">
                 <input type="hidden" name="target" value="redirect">
-                <input type="hidden" name="page" value="tools">
-                <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
-                    Værktøj
+                <input type="hidden" name="page" value="employee">
+                <button type="submit" class="btn btn-primary d-block mr-auto ml-0 grey-btn" value="submit">
+                    Tilbage
                 </button>
             </form>
         </div>

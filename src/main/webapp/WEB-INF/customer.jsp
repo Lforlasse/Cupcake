@@ -22,13 +22,10 @@
     </c:otherwise>
 </c:choose>
 
-
 <!-- INDHOLDS DIV -->
 <div class="jumbotron text-center" style="padding: 2px!important;">
     <br>
-    <h1>Velkommen
-        ${sessionScope.name}
-    </h1>
+    <h1>${sessionScope.name}</h1>
     <br>
     <div class="context">
         <div class="container-fluid">
