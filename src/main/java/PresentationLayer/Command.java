@@ -19,6 +19,10 @@ abstract class Command {
         commands.put("addCupcake", new AddCupcake());
         commands.put("removeCupcake", new RemoveCupcake());
         commands.put("createOrder", new CreateOrder());
+        commands.put("orderTool", new OrderTool());
+        commands.put("removeOrder", new RemoveOrder());
+        commands.put("customerCreditTool", new CustomerCreditTool());
+        commands.put("editCredit", new EditCredit());
     }
 
     static Command from(HttpServletRequest request) {

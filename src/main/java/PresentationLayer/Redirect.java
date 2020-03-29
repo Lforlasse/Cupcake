@@ -6,6 +6,7 @@ import FunctionLayer.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class Redirect extends Command {
     @Override
@@ -15,7 +16,7 @@ public class Redirect extends Command {
 
         if ("assortment".equals(page)) {
             if (request.getServletContext().getAttribute("toppingList") == null) {
-                request.getServletContext().setAttribute("toppingList", LogicFacade.getAllToppings());
+                request.getServletContext().setAttribute("toppingList", (List)LogicFacade.getAllToppings());
             }
             if (request.getServletContext().getAttribute("bottomList") == null) {
                 request.getServletContext().setAttribute("bottomList", LogicFacade.getAllBottoms());

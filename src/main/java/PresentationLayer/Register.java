@@ -22,7 +22,7 @@ public class Register extends Command {
 
         if (password1.equals(password2)) {
             try {
-                LogicFacade.createUser(email, password1, address, phone, fullName);
+                LogicFacade.createUser(email, password1, fullName, phone, address);
             } catch (Exception e) {
                 request.setAttribute("error", "Bruger eksisterer allerede");
             }
