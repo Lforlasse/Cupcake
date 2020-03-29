@@ -23,13 +23,14 @@ public class UserMapper {
         String phone = user.getPhone();
         String fullName = user.getFullName();
 
-        String query = "INSERT INTO users (Email, UserPassword, RoleId, Address, Phone, FullName) " + "VALUES (\""
+
+        String query = "INSERT INTO users (Email, UserPassword, RoleId, FullName, Phone, Address) " + "VALUES (\""
                 + email + "\", \""
                 + password + "\", \""
                 + role + "\", \""
-                + address + "\", \""
+                + fullName + "\", \""
                 + phone + "\", \""
-                + fullName + "\")";
+                + address + "\")";
         DBConnector.updateSQL(query);
        // login(email, password);
 
