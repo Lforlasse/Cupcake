@@ -1,11 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-8" %>
 <%@include file="../includes/headerNewUser.html" %>
-
 <c:choose>
     <c:when test="${sessionScope.email != null}">
         <%@include file="../includes/nav.jsp" %>
-
     </c:when>
     <c:otherwise>
         <%@include file="../includes/loginNav.html" %>

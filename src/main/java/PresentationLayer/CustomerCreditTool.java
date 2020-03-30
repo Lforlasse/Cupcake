@@ -1,13 +1,11 @@
 package PresentationLayer;
 
-import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class CustomerCreditTool extends Command {
     @Override

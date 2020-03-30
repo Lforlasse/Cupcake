@@ -49,7 +49,7 @@ public class OrderMapper {
         List<Map> statusList = new ArrayList<>();
         String statusId, orderStatus;
 
-        String query = "SELECT * FROM cupcake.orderstatus;";
+        String query = "SELECT * FROM orderstatus;";
         ResultSet rs = DBConnector.querySQL(query);
 
         try {
