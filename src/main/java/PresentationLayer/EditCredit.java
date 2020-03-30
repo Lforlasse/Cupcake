@@ -13,8 +13,13 @@ public class EditCredit extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
         HttpSession session = request.getSession();
+        double editCredit = 0;
+        try {
+            Double.parseDouble(request.getParameter("editCredit"));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
-        double editCredit = Double.parseDouble(request.getParameter("editCredit"));
         int userId = Integer.parseInt(request.getParameter("userId"));
 
         UserMapper.addUserBalance(userId, editCredit);
