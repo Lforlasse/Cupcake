@@ -92,7 +92,6 @@
                 <h2>Error ! </h2>
                 ${requestScope.error}
             </c:if>
-            <br><br>
         </div>
     </div>
 </div>

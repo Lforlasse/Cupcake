@@ -12,7 +12,7 @@
 <!-- INDHOLDS DIV -->
 <div class="jumbotron text-center" style="padding: 2px;">
     <br>
-    <h1>Cupcakes are love, copcakes are life</h1>
+    <h1>Cupcakes are love, cupcakes are life</h1>
     <br>
     <div class="context">
         <div class="container-fluid text-center">
