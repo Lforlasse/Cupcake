@@ -63,9 +63,9 @@
             <br>
             <form role="form" action="FrontController" name="redirect" method="POST">
                 <input type="hidden" name="target" value="redirect">
-                <input type="hidden" name="page" value="tools">
+                <input type="hidden" name="page" value="employee">
                 <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
-                    Værktøj
+                    Tilbage
                 </button>
             </form>
         </div>

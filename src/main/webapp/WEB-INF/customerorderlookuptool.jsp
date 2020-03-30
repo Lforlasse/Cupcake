@@ -39,7 +39,8 @@
             </form>
         </div>
         <form role="form" action="FrontController" name="redirect" method="POST">
-            <input type="hidden" name="target" value="employee">
+            <input type="hidden" name="target" value="redirect">
+            <input type="hidden" name="page" value="employee">
             <button type="submit" class="btn btn-primary d-block mr-auto ml-0 grey-btn" value="submit">
                 Tilbage
             </button>
