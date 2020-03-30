@@ -1,5 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<c:choose>
+    <c:when test="${sessionScope.role == null}">
+        <c:redirect url="FrontController?target=redirect&page=index"/>
+    </c:when>
+</c:choose>
 <%@include file="../includes/header.html" %>
 <c:choose>
     <c:when test="${sessionScope.email != null}">
