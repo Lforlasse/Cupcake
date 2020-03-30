@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import DBAccess.OrderMapper;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,8 @@ public class CustomerOrderUpdate extends Command {
         }
         OrderMapper.setOrderStatus(statusId, userId, orderId);
         session.setAttribute("userOrderList", OrderMapper.getUserOrders(userId));
+        User user = (User)session.getAttribute("user");
+        session.setAttribute("balance", user.getBalance());
         return "customerordertool";
     }
 }

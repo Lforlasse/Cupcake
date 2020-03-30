@@ -54,8 +54,17 @@
                 <tr class="bg-light">
                     <th scope="row">SUM</th>
                     <c:set var="order" value="${sessionScope.order}"/>
-                    <c:set var="lastLine" value="${order.get(order.size()-1)}"/>
-                    <td colspan="5">${lastLine.get("priceSum")}</td>
+
+                    <c:choose>
+                        <c:when test="${order.size() == 0}">
+                            <td colspan="5"></td>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="lastLine" value="${order.get(order.size()-1)}"/>
+                            <td colspan="5">${lastLine.get("priceSum")}</td>
+                        </c:otherwise>
+                    </c:choose>
+
                 </tr>
             </table>
             <table id="kredit" class="table table-bordered" style="margin-top: 10px">

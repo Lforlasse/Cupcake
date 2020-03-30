@@ -53,7 +53,7 @@ public class Order {
 
         for (CartItem item : userCart) {
 
-            query = "INSERT INTO orderContent (orderId,top,bottom,quantity) " +
+            query = "INSERT INTO ordercontent (orderId,top,bottom,quantity) " +
                     "VALUES (\"" + orderId + "\", \"" + item.getTopping() + "\", \"" + item.getBottom() + "\", " + item.getQuantity() + ");";
             DBConnector.updateSQL(query);
         }

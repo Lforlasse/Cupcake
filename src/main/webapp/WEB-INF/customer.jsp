@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <c:choose>
     <c:when test="${sessionScope.role != '20'}">
-        <c:redirect url="FrontController?target=redirect&page=index"></c:redirect>
+        <c:redirect url="FrontController?target=redirect&page=index"/>
     </c:when>
 </c:choose>
 <%@include file="../includes/header.html" %>

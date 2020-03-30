@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <c:choose>
     <c:when test="${sessionScope.role != '10'}">
-        <c:redirect url="FrontController?target=redirect&page=index"></c:redirect>
+        <c:redirect url="FrontController?target=redirect&page=index"/>
     </c:when>
 </c:choose>
 <%@include file="../includes/header.html" %>
@@ -60,14 +60,6 @@
                 <!-- AFSLUT FOR EACH -->
                 </tbody>
             </table>
-            <br>
-            <form role="form" action="FrontController" name="redirect" method="POST">
-                <input type="hidden" name="target" value="redirect">
-                <input type="hidden" name="page" value="tools">
-                <button type="submit" style="" class="btn btn-primary mx-auto d-block" value="submit">
-                    Værktøj
-                </button>
-            </form>
         </div>
     </div>
 </div>

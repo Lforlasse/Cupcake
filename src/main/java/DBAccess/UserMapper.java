@@ -8,14 +8,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
+/**
+ * Indeholder alle metoder der behandler data vedr. User-klassen i FunctionLayer-package.
+ *
+ * @version 1.0
+ * @author Joakim, Alex, Lasse, Benjamin
+ * @since 30-03-2020
+ */
 
 public class UserMapper {
 
-    public static ArrayList<User> getAllUsers() {
-        return null;
-    }
-
+    /**
+     * @param user Type: User
+     * @throws LoginSampleException MySQL
+     */
     public static void createUser(User user) throws LoginSampleException {
         String email = user.getEmail();
         String password = user.getPassword();
@@ -23,7 +30,6 @@ public class UserMapper {
         String address = user.getAddress();
         String phone = user.getPhone();
         String fullName = user.getFullName();
-
 
         String query = "INSERT INTO users (Email, UserPassword, RoleId, FullName, Phone, Address) " + "VALUES (\""
                 + email + "\", \""
@@ -35,6 +41,12 @@ public class UserMapper {
         DBConnector.updateSQL(query);
     }
 
+    /**
+     * @param email    Type: String
+     * @param password Type: String
+     * @return User object with user details
+     * @throws LoginSampleException MySQL
+     */
     public static User login(String email, String password) throws LoginSampleException {
         String query = "SELECT UserId, RoleId, Credit, FullName, Phone, Address FROM users WHERE Email = \"" + email + "\" AND UserPassword = \"" + password + "\"";
         ResultSet rs = DBConnector.querySQL(query);
@@ -67,7 +79,11 @@ public class UserMapper {
         }
     }
 
-    //Vis alle brugere
+    /**
+     * Vis alle brugere
+     *
+     * @return List with hashmaps of users registered in the DB
+     */
     public static ArrayList<HashMap<String, String>> seeAllUsers() {
         ArrayList<HashMap<String, String>> userList = new ArrayList<>();
         String userEmail, users;
@@ -123,7 +139,12 @@ public class UserMapper {
 //        return userList;
 //    }//seeAllUsers
 
-    //Tilføj positiv ændring på en brugers credit
+    /**
+     * Tilføj positiv ændring på en brugers credit
+     *
+     * @param userId       Type: Integer
+     * @param creditAdjust Type: Double
+     */
     public static void addUserBalance(int userId, double creditAdjust) {
 
         String query = "UPDATE users " +
@@ -132,7 +153,12 @@ public class UserMapper {
         DBConnector.updateSQL(query);
     }//addUserBalance
 
-    //Tilføj negativ ændring på en brugers credit
+    /**
+     * Tilføj negativ ændring på en brugers credit
+     *
+     * @param userId       Type: Integer
+     * @param creditAdjust Type: Double
+     */
     public static void subtractUserBalance(int userId, double creditAdjust) {
 
         String query = "UPDATE users " +
@@ -140,6 +166,4 @@ public class UserMapper {
                 "WHERE UserId = \"" + userId + "\";";
         DBConnector.updateSQL(query);
     }//subtractUserBalance
-
-
 }//class
