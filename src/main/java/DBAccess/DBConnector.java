@@ -1,5 +1,8 @@
 package DBAccess;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.Reader;
 import java.sql.*;
 
 /**
@@ -15,7 +18,7 @@ public class DBConnector {
         try {
             String driver, url, username, password, nameDB;
             nameDB = "cupcake";
-            driver = "com.mysql.cj.jdbc.Driver";
+            driver = ""/*""com.mysql.cj.jdbc.Driver"*/;
             url = "jdbc:mysql://localhost:3306/" + nameDB + "?verifyServerCertificate=false&useSSL=true&serverTimezone=UTC";
             username = "admin";
             password = "cupcakeworld";
