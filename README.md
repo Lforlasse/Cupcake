@@ -6,5 +6,4 @@ Til test af website, benyt "admin" bruger med password "admin" til test af admin
 
 
 En normal bruger kan oprettes.
-
 Til test kan man også benytte en test bruger som "alice@cooper.com" med password "pass1234".
