@@ -27,6 +27,7 @@ public class CreateOrder extends Command {
         session.setAttribute("order", latestOrder);
         session.setAttribute("orderId", orderId);
 
+
         return "order";
     }
 }

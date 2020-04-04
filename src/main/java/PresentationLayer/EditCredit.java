@@ -15,7 +15,7 @@ public class EditCredit extends Command {
         HttpSession session = request.getSession();
         double editCredit = 0;
         try {
-            Double.parseDouble(request.getParameter("editCredit"));
+            editCredit = Double.parseDouble(request.getParameter("editCredit"));
         } catch (Exception e) {
             System.out.println(e);
         }

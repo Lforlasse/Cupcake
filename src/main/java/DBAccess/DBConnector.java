@@ -14,11 +14,16 @@ public class DBConnector {
      * @throws SQLException MySQL
      */
     private static Connection conn() throws ClassNotFoundException, SQLException {
-        if (conn == null) {
+        if (conn == null || !conn.isValid(5)) {
             setDBCredentials();
             Class.forName("com.mysql.cj.jdbc.Driver");
             //System.out.println("\n--------------- MySQL ---------------");
-            conn = DriverManager.getConnection(url, username, password);
+            try {
+                conn = DriverManager.getConnection(url, username, password);
+            } catch (Exception e) {
+
+            }
+
             //System.out.println("Connected");
         }
         return conn;

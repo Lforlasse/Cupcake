@@ -53,7 +53,7 @@ public class Cart {
     //Fjern en varelinje fra userCart
     public void removeCartItem(String itemId) {
         int listCounter = -1;
-        int listSpot;
+        int listSpot = 0;
 
         for (CartItem item : userCart) {
 
@@ -61,9 +61,10 @@ public class Cart {
 
             if (itemId.equals(item.getItemId())) {
                 listSpot = listCounter;
-                userCart.remove(listSpot);
+
             }
         }
+        userCart.remove(listSpot);
         cartPrice = sumCartPrice();
     }//removeCartItem
 
